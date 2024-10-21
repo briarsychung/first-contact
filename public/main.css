@@ -1,22 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
+
 .screen {
   position: fixed;
-  top: 0; bottom: 0; left: 0; right: 0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 #screen-main {
-  background-color: black;
-  background-image: url("https://cdn.glitch.global/f065c294-3788-4460-8446-da39f910b52f/orbit_plot_inner.png?v=1729519801878");
+  background-color: #303030;
+  background-image: url("https://cdn.glitch.global/f065c294-3788-4460-8446-da39f910b52f/orbit_plot_inner.png?v=1729520054298");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: contain;
 }
 
 .window {
+  border-radius: 5px;
+  box-shadow: 0 0 5px #00000080;
   position: fixed;
+  top: 50px;
+  left: 50px;
 }
 
 #window-console {
-  background-color: black;
-  height: 300px;
-  width: 500px;
+  background-color: white;
+  height: 700px;
+  width: 1100px;
+}
+
+#console-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.console-message {
+  font-family: "Source Code Pro", monospace;
+  text-size: 24px;
 }
