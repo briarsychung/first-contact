@@ -17,7 +17,8 @@ function submit() {
 
 socket.on("message-receive", (message) => {
   if (mode === 1) {
-    alert(message);
+    sendMessage(message);
+    sendMessage(" ");
   }
 });
 
@@ -68,6 +69,24 @@ for (let i = 0; i < windows.length; i++) {
   });
 }
 
-document.addEventListener("keypress", (e)=> {
-  console.log(e);
-})
+document.addEventListener("keydown", (e) => {
+  if (focused === "window-console") {
+    if (e.key.length === 1) {
+      messageValue += e.key;
+    } else if (e.key === "Backspace") {
+      messageValue = messageValue.slice(0, -1);
+    }
+    consoleInput.innerHTML = messageValue + (cursorToggle ? " " : "_");
+  }
+});
+
+let consoleContainer = document.getElementById("console-container");
+
+function sendMessage(message) {
+  let span = document.createElement("span");
+  span.innerHTML = message;
+  span.classList.add("console-message");
+  
+  
+  consoleContainer.insertBefore(span, consoleInput);
+}
