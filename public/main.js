@@ -24,11 +24,29 @@ socket.on("message-receive", (message) => {
 window.display = display;
 window.submit = submit;
 
+let cursorToggle = true;
 
-function inputBar(toggle) {
-  if (toggle) {
-    
+function inputBar() {
+  let consoleInput = document.getElementById("console-input");
+  if (cursorToggle) {
+    consoleInput.innerHTML = "_";
+    cursorToggle = !cursorToggle;
+    setTimeout(inputBar, 500);
   } else {
-    
+    consoleInput.innerHTML = " ";
+    cursorToggle = !cursorToggle;
+    setTimeout(inputBar, 500);
   }
+}
+
+inputBar(true);
+
+let focused = "window-none";
+let windows = document.getElementsByClassName("window");
+
+for (let i = 0; i < windows.length; i++) {
+  windows[i].addEventListener("click", () => {
+    focused = windows[i].id;
+    console.log(focused);
+  });
 }
