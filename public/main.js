@@ -43,10 +43,17 @@ inputBar(true);
 
 let focused = "window-none";
 let windows = document.getElementsByClassName("window");
+let z = 1;
 
 for (let i = 0; i < windows.length; i++) {
   windows[i].addEventListener("click", () => {
+    let focusedWindow = document.getElementById(focused);
+    focusedWindow.classList.remove("focused");
+    if (focused !== windows[i].id && windows[i].id !== "window-none") {
+      windows[i].style.zIndex = z;
+      z++;
+    }
     focused = windows[i].id;
-    console.log(focused);
+    focusedWindow.classList.add("focused");
   });
 }
