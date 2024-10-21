@@ -25,21 +25,21 @@ window.display = display;
 window.submit = submit;
 
 let cursorToggle = true;
+let messageValue = "";
+let consoleInput = document.getElementById("console-input");
 
-function inputBar() {
-  let consoleInput = document.getElementById("console-input");
-  if (cursorToggle) {
-    consoleInput.innerHTML = "_";
-    cursorToggle = !cursorToggle;
-    setTimeout(inputBar, 500);
-  } else {
-    consoleInput.innerHTML = " ";
-    cursorToggle = !cursorToggle;
-    setTimeout(inputBar, 500);
+function consoleInputBar() {
+  if (focused === "window-console") {
+    if (cursorToggle) {
+      consoleInput.innerHTML = messageValue + "_";
+      cursorToggle = !cursorToggle;
+    } else {
+      consoleInput.innerHTML = messageValue + " ";
+      cursorToggle = !cursorToggle;
+    }
+    setTimeout(consoleInputBar, 500);
   }
 }
-
-inputBar(true);
 
 let focused = "window-none";
 let windows = document.getElementsByClassName("window");
@@ -47,13 +47,27 @@ let z = 1;
 
 for (let i = 0; i < windows.length; i++) {
   windows[i].addEventListener("click", () => {
-    let focusedWindow = document.getElementById(focused);
-    focusedWindow.classList.remove("focused");
-    if (focused !== windows[i].id && windows[i].id !== "window-none") {
-      windows[i].style.zIndex = z;
-      z++;
+    if (focused !== windows[i].id) {
+      document.getElementById(focused).classList.remove("focused");
+      if (windows[i].id !== "window-none") {
+        windows[i].style.zIndex = z;
+        z++;
+      }
+
+      focused = windows[i].id;
+
+      if (windows[i].id === "window-console") {
+        consoleInputBar(true);
+      } else {
+        cursorToggle = true;
+        consoleInput.innerHTML = messageValue + " ";
+      }
+      focused = windows[i].id;
+      document.getElementById(focused).classList.add("focused");
     }
-    focused = windows[i].id;
-    focusedWindow.classList.add("focused");
   });
 }
+
+document.addEventListener("keypress", (e)=> {
+  console.log(e);
+})
