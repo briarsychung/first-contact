@@ -1,0 +1,22 @@
+.screen {
+  position: fixed;
+  top: 0; bottom: 0; left: 0; right: 0;
+}
+
+#screen-main {
+  background-color: black;
+  background-image: url("https://cdn.glitch.global/f065c294-3788-4460-8446-da39f910b52f/orbit_plot_inner.png?v=1729519801878");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.window {
+  position: fixed;
+}
+
+#window-console {
+  background-color: black;
+  height: 300px;
+  width: 500px;
+}

@@ -15,14 +15,18 @@
   </head>
 
   <body>
-    <div id="screen-load">
+    <div id="screen-load" class="screen">
       <button onclick="display(1)">On-Screen View</button>
       <button onclick="display(2)">Controller View</button>
     </div>
 
-    <div id="screen-main" style="visibility: hidden"></div>
+    <div id="screen-main" style="visibility: hidden" class="screen">
+      <div id="window-console" class="window">
+        
+      </div>
+    </div>
 
-    <div id="screen-control" style="visibility: hidden">
+    <div id="screen-control" style="visibility: hidden" class="screen">
       <input id="input-message" />
       <button onclick="submit()">Submit</button>
     </div>
