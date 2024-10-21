@@ -33,10 +33,12 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  padding: 20px;
   width: 100%;
 }
 
 .console-message {
   font-family: "Source Code Pro", monospace;
-  text-size: 24px;
+  font-size: 20px;
+  white-space: pre;
 }

@@ -23,3 +23,12 @@ socket.on("message-receive", (message) => {
 
 window.display = display;
 window.submit = submit;
+
+
+function inputBar(toggle) {
+  if (toggle) {
+    
+  } else {
+    
+  }
+}
