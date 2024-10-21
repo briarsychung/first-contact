@@ -17,8 +17,10 @@ function submit() {
 
 socket.on("message-receive", (message) => {
   if (mode === 1) {
-    sendMessage(message);
+    sendMessage("> " + message);
     sendMessage(" ");
+
+    focus("window-console");
   }
 });
 
@@ -28,6 +30,7 @@ window.submit = submit;
 let cursorToggle = true;
 let messageValue = "";
 let consoleInput = document.getElementById("console-input");
+let consoleTimeout;
 
 function consoleInputBar() {
   if (focused === "window-console") {
@@ -38,7 +41,7 @@ function consoleInputBar() {
       consoleInput.innerHTML = messageValue + " ";
       cursorToggle = !cursorToggle;
     }
-    setTimeout(consoleInputBar, 500);
+    consoleTimeout = setTimeout(consoleInputBar, 500);
   }
 }
 
@@ -49,24 +52,30 @@ let z = 1;
 for (let i = 0; i < windows.length; i++) {
   windows[i].addEventListener("click", () => {
     if (focused !== windows[i].id) {
-      document.getElementById(focused).classList.remove("focused");
-      if (windows[i].id !== "window-none") {
-        windows[i].style.zIndex = z;
-        z++;
-      }
-
-      focused = windows[i].id;
-
-      if (windows[i].id === "window-console") {
-        consoleInputBar(true);
-      } else {
-        cursorToggle = true;
-        consoleInput.innerHTML = messageValue + " ";
-      }
-      focused = windows[i].id;
-      document.getElementById(focused).classList.add("focused");
+      focus(windows[i].id);
     }
   });
+}
+
+function focus(windowId) {
+  document.getElementById(focused).classList.remove("focused");
+
+  if (windowId !== "window-none") {
+    document.getElementById(windowId).style.zIndex = z;
+    z++;
+  }
+
+  focused = windowId;
+
+  if (windowId === "window-console") {
+    clearTimeout(consoleTimeout);
+    consoleInputBar(true);
+  } else {
+    cursorToggle = true;
+    consoleInput.innerHTML = messageValue + " ";
+  }
+  focused = windowId;
+  document.getElementById(focused).classList.add("focused");
 }
 
 document.addEventListener("keydown", (e) => {
@@ -86,7 +95,7 @@ function sendMessage(message) {
   let span = document.createElement("span");
   span.innerHTML = message;
   span.classList.add("console-message");
-  
-  
+
   consoleContainer.insertBefore(span, consoleInput);
+  consoleContainer.scrollTo(0, consoleContainer.scrollHeight);
 }
