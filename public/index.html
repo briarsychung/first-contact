@@ -10,10 +10,21 @@
 
     <link rel="icon" href="icon.png" />
     <link rel="stylesheet" href="main.css" />
+
+    <script type="module" src="./main.js"></script>
   </head>
 
   <body>
+    <div id="screen-load">
+      <button onclick="display(1)">On-Screen View</button>
+      <button onclick="display(2)">Controller View</button>
+    </div>
 
-    <script type="module" src="main.js"></script>
+    <div id="screen-main" style="visibility: hidden"></div>
+
+    <div id="screen-control" style="visibility: hidden">
+      <input id="input-message" />
+      <button onclick="submit()">Submit</button>
+    </div>
   </body>
 </html>
