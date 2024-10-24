@@ -1,7 +1,10 @@
+const ALIEN_TIME = 1000;
+const LOCK_TIME = 100;
+
 const socket = io.connect();
 let mode = 0;
 let messages = [];
-let currentMessage = -1;
+let currentMessage = 3;
 let sceneStarts = [];
 
 fetch("transcript.txt")
@@ -113,6 +116,8 @@ function windowFocus(windowId) {
   document.getElementById(focused).classList.add("focused");
 }
 
+let lock = false;
+
 document.addEventListener("keydown", (e) => {
   if (focused === "window-console") {
     /**
@@ -130,9 +135,41 @@ document.addEventListener("keydown", (e) => {
       messageValue = "";
     }
     consoleInput.innerHTML = messageValue + (cursorToggle ? " " : "_");*/
-    if (currentMessage >messages[currentMessage])
+    if (currentMessage > -1 && messages[currentMessage].author === 1) {
+      let next = messages[currentMessage].content[messageValue.length];
+      if (next) {
+        if (!lock) {
+          messageValue += next;
+        }
+      } else {
+        consoleSendMessage("&lt; " + messageValue);
+        consoleSendMessage(" ");
+
+        currentMessage++;
+        messageValue = "";
+        
+        lock = true;
+        setTimeout(() => {lock = false}, LOCK_TIME);
+
+        if (messages[currentMessage].author === 0) {
+          setTimeout(queueMessage, ALIEN_TIME);
+        }
+      }
+      consoleInput.innerHTML = messageValue + (cursorToggle ? " " : "_");
+    }
   }
 });
+
+function queueMessage() {
+  consoleSendMessage("&gt; " + messages[currentMessage].content);
+  consoleSendMessage(" ");
+
+  currentMessage++;
+
+  if (messages[currentMessage].author === 0) {
+    setTimeout(queueMessage, 1000);
+  }
+}
 
 let consoleContainer = document.getElementById("console-container");
 
