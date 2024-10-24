@@ -1,4 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+
+* {
+  font-family: "Open Sans", sans-serif;
+}
 
 .screen {
   position: fixed;
@@ -16,6 +21,7 @@
 }
 
 .window {
+  border: 1px solid #202020;
   border-radius: 5px;
   box-shadow: 0 0 5px #00000080;
   display: flex;
@@ -23,6 +29,18 @@
   position: fixed;
   top: 50px;
   left: 50px;
+}
+
+.window-top {
+  background-color: #606060;
+  border-radius: 2.5px 2.5px 0 0;
+  color: white;
+  display: flex;
+  padding: 10px 15px;
+}
+
+.top-title {
+  flex-grow: 1;
 }
 
 #window-console {
