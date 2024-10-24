@@ -1,46 +1,47 @@
-[START 2]
-0 GREETINGS
-[PRE 4]
-1 Identify yourself
-0 TLZ1..JS5
-1 What?
-1 Took you long enough.
-0 2183E4R+H?
-1 2189327jsksajsaYes.
-1 ...
-1 yall still there?
-[START 4]
-0 PWQO00000-1
-1 Ok I’ll assume that means yes.
-0 PWQO00000-1827
-1 Does PWQO00000 mean a response?
-0 CCCR-18 PWQO
-1 Right.
-1 So just PWQO than?
-1 *then
-0 012
-1 ...
-1 Did you get the file response I sent you?
-0 👍
-0 🛸🏃‍♂️🌎💨?
-[PRE 5]
-1 Let’s freaking do it!
-0 👌👌👌
-1 When is this happening?
-1 When am I going to be picked up?
-1 Wait, do you guys have a teleporter? Should I meet you outside
-0 📡
-1 Got it. Will do.
-1 Beacon complete✅, transmitting signal soon!
-1 Received?
-0 🛸👍
-1 Whete are you?
-1 Do you heve eta
-1 When are you gettaing here? Hurrt.
-1 Pleaswe come.
-1 Please he’s here I need helwp
-1 HURRY PQLEASE
-1 HURRY
-1 CMONA CMONE
-1 don’t do thais
-1 pleasq
+START_2
+0_GREETINGS
+END_2
+1_Identify yourself
+0_TLZ1..JS5
+1_What?
+1_Took you long enough.
+0_2183E4R+H?
+1_2189327jsksajsaYes.
+1_...
+1_yall still there?
+START_4
+0_PWQO00000-1
+1_Ok I’ll assume that means yes.
+0_PWQO00000-1827
+1_Does PWQO00000 mean a response?
+0_CCCR-18 PWQO
+1_Right.
+1_So just PWQO than?
+1_*then
+0_012
+1_...
+1_Did you get the file response I sent you?
+0_👍
+0_🛸🏃‍♂️🌎💨?
+END_4
+1_Let’s freaking do it!
+0_👌👌👌
+1_When is this happening?
+1_When am I going to be picked up?
+1_Wait, do you guys have a teleporter? Should I meet you outside
+0_📡
+1_Got it. Will do.
+1_Beacon complete✅, transmitting signal soon!
+1_Received?
+START_5
+0_🛸👍
+1_Whete are you?
+1_Do you heve eta
+1_When are you gettaing here? Hurrt.
+1_Pleaswe come.
+1_Please he’s here I need helwp
+1_HURRY PQLEASE
+1_HURRY
+1_CMONA CMONE
+1_don’t do thais
+1_pleasq

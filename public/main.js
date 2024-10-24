@@ -1,5 +1,36 @@
 const socket = io.connect();
 let mode = 0;
+let messages = [];
+let currentMessage = -1;
+let sceneStarts = [];
+
+fetch("transcript.txt")
+  .then((res) => res.text())
+  .then((text) => {
+    messages = text.split("\n");
+    for (let i = 0; i < messages.length; i++) {
+      let code = messages[i].split("_");
+      if (code[0] === "START") {
+        messages[i] = {
+          type: "start",
+          scene: Number(code[1]),
+        };
+      } else if (code[0] === "END") {
+        messages[i] = {
+          type: "end",
+          scene: Number(code[1]),
+        };
+      } else {
+        messages[i] = {
+          type: "message",
+          author: Number(code[0]),
+          content: code[1],
+        };
+      }
+    }
+    console.log(messages);
+  })
+  .catch((e) => console.error(e));
 
 function display(screen) {
   if (screen === 1) {
@@ -84,6 +115,7 @@ function windowFocus(windowId) {
 
 document.addEventListener("keydown", (e) => {
   if (focused === "window-console") {
+    /**
     if (e.key.length === 1) {
       messageValue += e.key;
     } else if (e.key === "Backspace") {
@@ -97,7 +129,8 @@ document.addEventListener("keydown", (e) => {
       }
       messageValue = "";
     }
-    consoleInput.innerHTML = messageValue + (cursorToggle ? " " : "_");
+    consoleInput.innerHTML = messageValue + (cursorToggle ? " " : "_");*/
+    if (currentMessage >messages[currentMessage])
   }
 });
 
