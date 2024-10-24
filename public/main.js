@@ -14,16 +14,20 @@ function display(screen) {
 function consoleSubmit(message) {
   socket.emit(
     "message-send",
-    message ? message : document.getElementById("input-message").value
+    message ? message : "> " + document.getElementById("input-message").value
   );
 }
 
 socket.on("message-receive", (message) => {
   if (mode === 1) {
-    consoleSendMessage("> " + message);
-    consoleSendMessage(" ");
+    if (message === "reset") {
+      consoleReset();
+    } else {
+      consoleSendMessage(message);
+      consoleSendMessage(" ");
 
-    windowFocus("window-console");
+      windowFocus("window-console");
+    }
   }
 });
 
@@ -86,10 +90,7 @@ document.addEventListener("keydown", (e) => {
       messageValue = messageValue.slice(0, -1);
     } else if (e.key === "Enter") {
       if (messageValue === "reset") {
-        let removables = document.getElementsByClassName("console-removable");
-        for (let i = removables.length - 1; i > -1; i--) {
-          removables[i].remove();
-        }
+        consoleReset();
       } else {
         consoleSendMessage("&lt; " + messageValue);
         consoleSendMessage(" ");
@@ -110,6 +111,13 @@ function consoleSendMessage(message) {
 
   consoleContainer.insertBefore(span, consoleInput);
   consoleContainer.scrollTo(0, consoleContainer.scrollHeight);
+}
+
+function consoleReset() {
+  let removables = document.getElementsByClassName("console-removable");
+  for (let i = removables.length - 1; i > -1; i--) {
+    removables[i].remove();
+  }
 }
 
 window.display = display;
