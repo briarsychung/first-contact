@@ -1,8 +1,3 @@
-
-
-window.display = display;
-window.submit = submit;
-
 const socket = io.connect();
 let mode = 0;
 
@@ -16,16 +11,19 @@ function display(screen) {
   mode = screen;
 }
 
-function submit() {
-  socket.emit("message-send", document.getElementById("input-message").value);
+function consoleSubmit(message) {
+  socket.emit(
+    "message-send",
+    message ? message : document.getElementById("input-message").value
+  );
 }
 
 socket.on("message-receive", (message) => {
   if (mode === 1) {
-    sendMessage("> " + message);
-    sendMessage(" ");
+    consoleSendMessage("> " + message);
+    consoleSendMessage(" ");
 
-    focus("window-console");
+    windowFocus("window-console");
   }
 });
 
@@ -54,12 +52,12 @@ let z = 1;
 for (let i = 0; i < windows.length; i++) {
   windows[i].addEventListener("click", () => {
     if (focused !== windows[i].id) {
-      focus(windows[i].id);
+      windowFocus(windows[i].id);
     }
   });
 }
 
-function focus(windowId) {
+function windowFocus(windowId) {
   document.getElementById(focused).classList.remove("focused");
 
   if (windowId !== "window-none") {
@@ -87,8 +85,15 @@ document.addEventListener("keydown", (e) => {
     } else if (e.key === "Backspace") {
       messageValue = messageValue.slice(0, -1);
     } else if (e.key === "Enter") {
-      sendMessage("&lt; " + messageValue);
-      sendMessage(" ");
+      if (messageValue === "reset") {
+        let removables = document.getElementsByClassName("console-removable");
+        for (let i = removables.length - 1; i > -1; i--) {
+          removables[i].remove();
+        }
+      } else {
+        consoleSendMessage("&lt; " + messageValue);
+        consoleSendMessage(" ");
+      }
       messageValue = "";
     }
     consoleInput.innerHTML = messageValue + (cursorToggle ? " " : "_");
@@ -97,11 +102,15 @@ document.addEventListener("keydown", (e) => {
 
 let consoleContainer = document.getElementById("console-container");
 
-function sendMessage(message) {
+function consoleSendMessage(message) {
   let span = document.createElement("span");
   span.innerHTML = message;
   span.classList.add("console-message");
+  span.classList.add("console-removable");
 
   consoleContainer.insertBefore(span, consoleInput);
   consoleContainer.scrollTo(0, consoleContainer.scrollHeight);
 }
+
+window.display = display;
+window.consoleSubmit = consoleSubmit;
