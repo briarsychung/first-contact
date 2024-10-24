@@ -32,15 +32,22 @@
 }
 
 .window-top {
-  background-color: #606060;
+  background-color: #404040;
   border-radius: 2.5px 2.5px 0 0;
   color: white;
   display: flex;
   padding: 10px 15px;
 }
-
 .top-title {
   flex-grow: 1;
+}
+
+.top-icon {
+  background-color: #505050;
+  border-radius: 10px;
+  font-size: 16px;
+  margin-left: 15px;
+  padding: 5px;
 }
 
 #window-console {
