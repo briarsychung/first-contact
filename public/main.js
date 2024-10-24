@@ -1,3 +1,8 @@
+
+
+window.display = display;
+window.submit = submit;
+
 const socket = io.connect();
 let mode = 0;
 
@@ -23,9 +28,6 @@ socket.on("message-receive", (message) => {
     focus("window-console");
   }
 });
-
-window.display = display;
-window.submit = submit;
 
 let cursorToggle = true;
 let messageValue = "";
@@ -84,6 +86,10 @@ document.addEventListener("keydown", (e) => {
       messageValue += e.key;
     } else if (e.key === "Backspace") {
       messageValue = messageValue.slice(0, -1);
+    } else if (e.key === "Enter") {
+      sendMessage("&lt; " + messageValue);
+      sendMessage(" ");
+      messageValue = "";
     }
     consoleInput.innerHTML = messageValue + (cursorToggle ? " " : "_");
   }
