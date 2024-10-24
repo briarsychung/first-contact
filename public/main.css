@@ -32,21 +32,28 @@
 }
 
 .window-top {
-  background-color: #404040;
+  align-items: center;
+  background-color: #606060;
   border-radius: 2.5px 2.5px 0 0;
-  color: white;
+  color: #e0e0e0;
   display: flex;
   padding: 10px 15px;
 }
+
+.focused > .window-top {
+  background-color: #404040;
+  color: white;
+}
+
 .top-title {
   flex-grow: 1;
 }
 
 .top-icon {
   background-color: #505050;
-  border-radius: 10px;
-  font-size: 16px;
-  margin-left: 15px;
+  border-radius: 15px;
+  font-size: 16px !important;
+  margin-left: 10px;
   padding: 5px;
 }
 
@@ -78,8 +85,4 @@
   bottom: 0;
   left: 0;
   right: 0;
-}
-
-.focused {
-  box-shadow: 0 0 5px #0080ff;
 }
