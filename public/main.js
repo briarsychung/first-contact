@@ -147,9 +147,11 @@ document.addEventListener("keydown", (e) => {
 
         currentMessage++;
         messageValue = "";
-        
+
         lock = true;
-        setTimeout(() => {lock = false}, LOCK_TIME);
+        setTimeout(() => {
+          lock = false;
+        }, LOCK_TIME);
 
         if (messages[currentMessage].author === 0) {
           setTimeout(queueMessage, ALIEN_TIME);
@@ -170,6 +172,30 @@ function queueMessage() {
     setTimeout(queueMessage, 1000);
   }
 }
+
+function consoleLoad(scene) {
+  socket.emit("load-send", scene);
+}
+
+socket.on("load-receive", (scene) => {
+  if (mode === 1) {
+    consoleReset();
+    currentMessage = 0;
+    for (let i = 0; i < messages.length; i++) {
+      if ((messages[i].type = "start" && messages[i].scene === scene)) {
+        break;
+      }
+      if ((messages[i].type = "message")) {
+        consoleSendMessage(
+          (messages[i].author === 0 ? "&gt; " : "&lt; ") + messages[i].content
+        );
+        consoleSendMessage(" ");
+      }
+
+      currentMessage++;
+    }
+  }
+});
 
 let consoleContainer = document.getElementById("console-container");
 
@@ -192,3 +218,4 @@ function consoleReset() {
 
 window.display = display;
 window.consoleSubmit = consoleSubmit;
+window.consoleLoad = consoleLoad;
