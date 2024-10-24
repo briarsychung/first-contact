@@ -1,6 +1,6 @@
-[ST]
+[START 2]
 0 GREETINGS
-[---]
+[PRE 4]
 1 Identify yourself
 0 TLZ1..JS5
 1 What?
@@ -9,7 +9,7 @@
 1 2189327jsksajsaYes.
 1 ...
 1 yall still there?
----
+[START 4]
 0 PWQO00000-1
 1 Ok I’ll assume that means yes.
 0 PWQO00000-1827
@@ -23,24 +23,24 @@
 1 Did you get the file response I sent you?
 0 👍
 0 🛸🏃‍♂️🌎💨?
----
->Let’s freaking do it!
->👌👌👌
->When is this happening?
->When am I going to be picked up?
->Wait, do you guys have a teleporter? Should I meet you outside
->📡
->Got it. Will do.
->Beacon complete✅, transmitting signal soon!
->Received?
->🛸👍
->Whete are you?
->Do you heve eta
->When are you gettaing here? Hurrt.
->Pleaswe come.
->Please he’s here I need helwp
->HURRY PQLEASE
->HURRY
->CMONA CMONE
->don’t do thais
->pleasq
+[PRE 5]
+1 Let’s freaking do it!
+0 👌👌👌
+1 When is this happening?
+1 When am I going to be picked up?
+1 Wait, do you guys have a teleporter? Should I meet you outside
+0 📡
+1 Got it. Will do.
+1 Beacon complete✅, transmitting signal soon!
+1 Received?
+0 🛸👍
+1 Whete are you?
+1 Do you heve eta
+1 When are you gettaing here? Hurrt.
+1 Pleaswe come.
+1 Please he’s here I need helwp
+1 HURRY PQLEASE
+1 HURRY
+1 CMONA CMONE
+1 don’t do thais
+1 pleasq
