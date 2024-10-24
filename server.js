@@ -19,4 +19,7 @@ io.sockets.on("connection", (socket) => {
   socket.on("load-send", (message) => {
     io.emit("load-receive", message);
   });
+  socket.on("start-send", (message) => {
+    io.emit("start-receive", message);
+  });
 });

@@ -30,9 +30,7 @@
         <div id="console-top" class="window-top">
           <span class="top-title">Command Prompt</span>
           <span class="material-symbols-outlined top-icon"> minimize </span>
-          <span class="material-symbols-outlined top-icon">
-            open_in_full
-          </span>
+          <span class="material-symbols-outlined top-icon"> open_in_full </span>
           <span class="material-symbols-outlined top-icon"> close </span>
         </div>
         <div id="console-container">
@@ -72,18 +70,14 @@
       <h1>Console</h1>
       <input id="input-message" />
       <button onclick="consoleSubmit()">Submit</button>
-      <button onclick="consoleSubmit('> GREETINGS.')">Send "GREETINGS."</button>
-      <br>
-      <button onclick="consoleLoad(2)">
-        Start Scene 2 (Reset)
-      </button>
-      <button onclick="consoleLoad(4)">
-        Start Scene 4
-      </button>
-      <button onclick="consoleLoad(5)">
-        Start Scene 5
-      </button>
-      
+      <br />
+      <button onclick="consoleLoad(2)">Load Scene 2 (Reset)</button>
+      <button onclick="consoleStart(2)">Start Scene 2</button>
+      <button onclick="consoleLoad(4)">Load Scene 4</button>
+      <button onclick="consoleStart(4)">Start Scene 4</button>
+      <button onclick="consoleLoad(5)">Load Scene 5</button>
+      <button onclick="consoleStart(5)">Start Scene 5</button>
+
       <!--
       <button onclick="consoleSubmit('reset')">reset</button>
       <h2>Message Presets</h2>

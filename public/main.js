@@ -4,7 +4,7 @@ const LOCK_TIME = 100;
 const socket = io.connect();
 let mode = 0;
 let messages = [];
-let currentMessage = 3;
+let currentMessage = 0;
 let sceneStarts = [];
 
 fetch("transcript.txt")
@@ -169,8 +169,10 @@ function queueMessage() {
   currentMessage++;
 
   if (messages[currentMessage].author === 0) {
-    setTimeout(queueMessage, 1000);
+    setTimeout(queueMessage, ALIEN_TIME);
   }
+
+  windowFocus("window-console");
 }
 
 function consoleLoad(scene) {
@@ -182,10 +184,11 @@ socket.on("load-receive", (scene) => {
     consoleReset();
     currentMessage = 0;
     for (let i = 0; i < messages.length; i++) {
-      if ((messages[i].type = "start" && messages[i].scene === scene)) {
+      if (messages[i].type === "start" && messages[i].scene === scene) {
         break;
       }
-      if ((messages[i].type = "message")) {
+      if (messages[i].type === "message") {
+        console.log(messages[i]);
         consoleSendMessage(
           (messages[i].author === 0 ? "&gt; " : "&lt; ") + messages[i].content
         );
@@ -194,6 +197,17 @@ socket.on("load-receive", (scene) => {
 
       currentMessage++;
     }
+  }
+});
+
+function consoleStart(scene) {
+  socket.emit("start-send", scene);
+}
+
+socket.on("start-receive", (scene) => {
+  if (mode === 1) {
+    currentMessage++;
+    queueMessage();
   }
 });
 
@@ -219,3 +233,4 @@ function consoleReset() {
 window.display = display;
 window.consoleSubmit = consoleSubmit;
 window.consoleLoad = consoleLoad;
+window.consoleStart = consoleStart;
