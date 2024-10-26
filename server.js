@@ -22,4 +22,7 @@ io.sockets.on("connection", (socket) => {
   socket.on("play-send", (state) => {
     io.emit("play-receive", state);
   });
+  socket.on("remove-send", (state) => {
+    io.emit("remove-receive", state);
+  });
 });

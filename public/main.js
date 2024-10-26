@@ -252,13 +252,18 @@ function changeState(state) {
 
 function consoleDelete() {
   socket.emit("remove-send");
-  if (currentMessage > 0) {
-    currentMessage--;
-    let removables = document.getElementsByClassName("console-message");
-    removables[removables.length - 2].remove();
-    removables[removables.length - 3].remove();
-  }
 }
+
+socket.on("remove-receive", () => {
+  if (mode === 1 && messages[currentMessage - 1].type === "message") {
+    currentMessage--;
+    let removables = document.getElementsByClassName("console-removable");
+    removables[removables.length - 1].remove();
+    removables[removables.length - 1].remove();
+    
+    changeState(false);
+  }
+})
 
 window.display = display;
 window.consoleSubmit = consoleSubmit;
