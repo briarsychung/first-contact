@@ -182,17 +182,14 @@ function loadScene(scene) {
 
 socket.on("load-receive", (scene) => {
   if (mode === 1) {
-    if (scene <= 2) {
-      consoleLoad(2);
-    } else if (scene <= 4) {
-      consoleLoad(4);
-    } else {
-      consoleLoad(5);
-    }
+    consoleLoad(scene);
+  } else if (mode === 2) {
+    document.getElementById("scene-display").innerHTML = scene;
   }
 });
 
 function consoleLoad(scene) {
+  console.log(messages);
   consoleReset();
   currentMessage = 0;
   for (let i = 0; i < messages.length; i++) {
@@ -210,27 +207,6 @@ function consoleLoad(scene) {
   }
 }
 
-function consoleStart(scene) {
-  socket.emit("start-send", scene);
-}
-
-socket.on("start-receive", (scene) => {
-  if (mode === 1) {
-    if (scene <= 2) {
-      consoleLoad(2);
-    } else if (scene <= 4) {
-      consoleLoad(4);
-    } else {
-      consoleLoad(5);
-    }
-
-    socket.emit("play-send", true);
-
-    currentMessage++;
-    queueMessage();
-  }
-});
-
 let consoleContainer = document.getElementById("console-container");
 
 function consoleSendMessage(message) {
@@ -244,7 +220,7 @@ function consoleSendMessage(message) {
 }
 
 function consoleReset() {
-  //socket.emit("play-send", false);
+  socket.emit("play-send", false);
 
   let removables = document.getElementsByClassName("console-removable");
   for (let i = removables.length - 1; i > -1; i--) {
@@ -272,6 +248,5 @@ function changeState(state) {
 
 window.display = display;
 window.consoleSubmit = consoleSubmit;
-window.consoleStart = consoleStart;
 window.loadScene = loadScene;
 window.changeState = changeState;
