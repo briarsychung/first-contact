@@ -1,4 +1,4 @@
-const ALIEN_TIME = 1000;
+const ALIEN_TIME = 2000;
 const LOCK_TIME = 100;
 
 const socket = io.connect();
@@ -141,7 +141,7 @@ document.addEventListener("keydown", (e) => {
         if (!lock) {
           messageValue += next;
         }
-      } else {
+      } else if (e.key === "Enter") {
         consoleSendMessage("&lt; " + messageValue);
         consoleSendMessage(" ");
 
