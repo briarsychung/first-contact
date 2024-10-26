@@ -136,7 +136,7 @@ document.addEventListener("keydown", (e) => {
       messageValue = "";
     }
     consoleInput.innerHTML = messageValue + (cursorToggle ? " " : "_");*/
-    if (currentMessage > -1 && messages[currentMessage].author === 1) {
+    if (consolePlaying && currentMessage > -1 && messages[currentMessage].author === 1) {
       let next = messages[currentMessage].content[messageValue.length];
       if (e.key === "Backspace") {
         messageValue = messageValue.slice(0, -1);
@@ -164,7 +164,6 @@ document.addEventListener("keydown", (e) => {
 });
 
 function queueMessage() {
-  console.log("queued");
   consoleSendMessage("&gt; " + messages[currentMessage].content);
   consoleSendMessage(" ");
 
@@ -210,7 +209,6 @@ function consoleLoad(scene) {
 let consoleContainer = document.getElementById("console-container");
 
 function consoleSendMessage(message) {
-  console.log(message);
   let span = document.createElement("span");
   span.innerHTML = message;
   span.classList.add("console-message");
@@ -230,12 +228,15 @@ function consoleReset() {
 }
 
 socket.on("play-receive", (state) => {
-
-  if (state) {
-    currentMessage++;
-    queueMessage();
+  if (state && !consolePlaying) {
+      currentMessage++;
+    if (messages[currentMessage].author === 0) {
+      queueMessage();
+    }
+  } else if (!state && consolePlaying) {
+    currentMessage--;
   }
-  
+
   consolePlaying = state;
 
   if (mode === 2) {
@@ -249,7 +250,18 @@ function changeState(state) {
   socket.emit("play-send", state);
 }
 
+function consoleDelete() {
+  socket.emit("remove-send");
+  if (currentMessage > 0) {
+    currentMessage--;
+    let removables = document.getElementsByClassName("console-message");
+    removables[removables.length - 2].remove();
+    removables[removables.length - 3].remove();
+  }
+}
+
 window.display = display;
 window.consoleSubmit = consoleSubmit;
 window.loadScene = loadScene;
 window.changeState = changeState;
+window.consoleDelete = consoleDelete;
