@@ -34,31 +34,53 @@
           <span class="material-symbols-outlined top-icon"> close </span>
         </div>
         <div id="console-container">
-          <span class="console-message">Pinging 203.0.113.0 with 32 bytes of data:</span>
-          <span class="console-message">Reply from 203.0.113.0: bytes=32 time=24ms TTL=47</span>
+          <span class="console-message"
+            >Pinging 203.0.113.0 with 32 bytes of data:</span
+          >
+          <span class="console-message"
+            >Reply from 203.0.113.0: bytes=32 time=24ms TTL=47</span
+          >
           <span class="console-message">Request timed out.</span>
-          <span class="console-message">Reply from 203.0.113.0: bytes=32 time=28ms TTL=47</span>
-          <span class="console-message">Reply from 203.0.113.0: bytes=32 time=21ms TTL=47</span>
-          <span class="console-message">Reply from 203.0.113.0: bytes=32 time=23ms TTL=47</span>
+          <span class="console-message"
+            >Reply from 203.0.113.0: bytes=32 time=28ms TTL=47</span
+          >
+          <span class="console-message"
+            >Reply from 203.0.113.0: bytes=32 time=21ms TTL=47</span
+          >
+          <span class="console-message"
+            >Reply from 203.0.113.0: bytes=32 time=23ms TTL=47</span
+          >
           <span class="console-message"> </span>
           <span class="console-message">Ping statistics for 203.0.113.0:</span>
-          <span class="console-message">    Packets: Sent = 5, Received = 4, Lost = 1 (20% loss),</span>
-          <span class="console-message">Approximate round trip times in milli-seconds:</span>
-          <span class="console-message">    Minimum = 21ms, Maximum = 28ms, Average = 24ms</span>
+          <span class="console-message">
+            Packets: Sent = 5, Received = 4, Lost = 1 (20% loss),</span
+          >
+          <span class="console-message"
+            >Approximate round trip times in milli-seconds:</span
+          >
+          <span class="console-message">
+            Minimum = 21ms, Maximum = 28ms, Average = 24ms</span
+          >
           <span class="console-message"> </span>
-          <span class="console-message">Tracing route to fc1124.bysd.harl.net [198.51.100.0]</span>
+          <span class="console-message"
+            >Tracing route to fc1124.bysd.harl.net [198.51.100.0]</span
+          >
           <span class="console-message">over a maximum of 30 hops:</span>
           <span class="console-message"> </span>
-          <span class="console-message">   1    &lt;1ms    &lt;1ms    &lt;1ms  192.0.2.0</span>
-          <span class="console-message">   2     2ms     1ms     1ms  134.49.278.3</span>
-          <span class="console-message">   3     4ms     5ms     3ms  57.394.45.1</span>
-          <span class="console-message">   4     5ms     5ms     6ms  195.0.552.9</span>
-          <span class="console-message">   5     *       *       *    Request timed out.</span>
-          <span class="console-message">   6    14ms    17ms    15ms  609.67.20.1</span>
+          <span class="console-message">
+            1 &lt;1ms &lt;1ms &lt;1ms 192.0.2.0</span
+          >
+          <span class="console-message"> 2 2ms 1ms 1ms 134.49.278.3</span>
+          <span class="console-message"> 3 4ms 5ms 3ms 57.394.45.1</span>
+          <span class="console-message"> 4 5ms 5ms 6ms 195.0.552.9</span>
+          <span class="console-message"> 5 * * * Request timed out.</span>
+          <span class="console-message"> 6 14ms 17ms 15ms 609.67.20.1</span>
           <span class="console-message"> </span>
           <span class="console-message">Trace complete.</span>
           <span class="console-message"> </span>
-          <span class="console-message">Ping received from 192.48.267.1: time=239ms</span>
+          <span class="console-message"
+            >Ping received from 192.48.267.1: time=239ms</span
+          >
           <span class="console-message">New connection established</span>
           <span class="console-message"> </span>
           <span class="console-message" id="console-input"> </span>
@@ -67,15 +89,22 @@
     </div>
 
     <div id="screen-control" style="visibility: hidden" class="screen">
+      <h1>Current Scene: <span id="scene-display">2</span></h1>
+      <h2>
+        Load Scene:
+      </h2>
+      <button onclick="loadScene(2)">2</button>
+      <button onclick="loadScene(4)">4</button>
+      <button onclick="loadScene(5)">5</button>
       <h1>Console</h1>
+      <h2>
+        Status: <span id="console-status">Paused</span>
+      </h2>
       <input id="input-message" />
       <button onclick="consoleSubmit()">Submit</button>
       <br />
-      <button onclick="consoleLoad(2)">Load Scene 2 (Reset)</button>
       <button onclick="consoleStart(2)">Start Scene 2</button>
-      <button onclick="consoleLoad(4)">Load Scene 4</button>
       <button onclick="consoleStart(4)">Start Scene 4</button>
-      <button onclick="consoleLoad(5)">Load Scene 5</button>
       <button onclick="consoleStart(5)">Start Scene 5</button>
 
       <!--

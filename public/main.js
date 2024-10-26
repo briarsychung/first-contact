@@ -1,6 +1,8 @@
 const ALIEN_TIME = 2000;
 const LOCK_TIME = 100;
 
+let consolePlaying = false;
+
 const socket = io.connect();
 let mode = 0;
 let messages = [];
@@ -168,37 +170,47 @@ function queueMessage() {
 
   currentMessage++;
 
-  if (messages[currentMessage].author === 0) {
+  if (consolePlaying && messages[currentMessage].author === 0) {
     setTimeout(queueMessage, ALIEN_TIME);
   }
 
   windowFocus("window-console");
 }
 
-function consoleLoad(scene) {
+function loadScene(scene) {
   socket.emit("load-send", scene);
 }
 
 socket.on("load-receive", (scene) => {
   if (mode === 1) {
-    consoleReset();
-    currentMessage = 0;
-    for (let i = 0; i < messages.length; i++) {
-      if (messages[i].type === "start" && messages[i].scene === scene) {
-        break;
-      }
-      if (messages[i].type === "message") {
-        console.log(messages[i]);
-        consoleSendMessage(
-          (messages[i].author === 0 ? "&gt; " : "&lt; ") + messages[i].content
-        );
-        consoleSendMessage(" ");
-      }
-
-      currentMessage++;
+    if (scene <= 2) {
+      consoleLoad(2);
+    } else if (scene <= 4) {
+      consoleLoad(4);
+    } else {
+      consoleLoad(5);
     }
   }
 });
+
+function consoleLoad(scene) {
+  consoleReset();
+  currentMessage = 0;
+  for (let i = 0; i < messages.length; i++) {
+    if (messages[i].type === "start" && messages[i].scene === scene) {
+      break;
+    }
+    if (messages[i].type === "message") {
+      console.log(messages[i]);
+      consoleSendMessage(
+        (messages[i].author === 0 ? "&gt; " : "&lt; ") + messages[i].content
+      );
+      consoleSendMessage(" ");
+    }
+
+    currentMessage++;
+  }
+}
 
 function consoleStart(scene) {
   socket.emit("start-send", scene);
@@ -206,6 +218,8 @@ function consoleStart(scene) {
 
 socket.on("start-receive", (scene) => {
   if (mode === 1) {
+    socket.emit("play-send", true);
+    
     currentMessage++;
     queueMessage();
   }
@@ -224,13 +238,23 @@ function consoleSendMessage(message) {
 }
 
 function consoleReset() {
+    socket.emit("play-send", false);
+  
   let removables = document.getElementsByClassName("console-removable");
   for (let i = removables.length - 1; i > -1; i--) {
     removables[i].remove();
   }
 }
 
+socket.on("play-send", (state) => {
+  consolePlaying = state;
+  
+  if (mode === 0) {
+    document.getElementById("console-status")
+  }
+})
+
 window.display = display;
 window.consoleSubmit = consoleSubmit;
-window.consoleLoad = consoleLoad;
 window.consoleStart = consoleStart;
+window.loadScene = loadScene;
