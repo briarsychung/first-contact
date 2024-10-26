@@ -33,7 +33,6 @@ fetch("transcript.txt")
         };
       }
     }
-    console.log(messages);
   })
   .catch((e) => console.error(e));
 
@@ -201,7 +200,6 @@ function consoleLoad(scene) {
       break;
     }
     if (messages[i].type === "message") {
-      console.log(messages[i]);
       consoleSendMessage(
         (messages[i].author === 0 ? "&gt; " : "&lt; ") + messages[i].content
       );
@@ -218,8 +216,16 @@ function consoleStart(scene) {
 
 socket.on("start-receive", (scene) => {
   if (mode === 1) {
+    if (scene <= 2) {
+      consoleLoad(2);
+    } else if (scene <= 4) {
+      consoleLoad(4);
+    } else {
+      consoleLoad(5);
+    }
+
     socket.emit("play-send", true);
-    
+
     currentMessage++;
     queueMessage();
   }
@@ -238,23 +244,34 @@ function consoleSendMessage(message) {
 }
 
 function consoleReset() {
-    socket.emit("play-send", false);
-  
+  //socket.emit("play-send", false);
+
   let removables = document.getElementsByClassName("console-removable");
   for (let i = removables.length - 1; i > -1; i--) {
     removables[i].remove();
   }
 }
 
-socket.on("play-send", (state) => {
+socket.on("play-receive", (state) => {
+  console.log(state);
   consolePlaying = state;
-  
-  if (mode === 0) {
-    document.getElementById("console-status")
+
+  if (mode === 2) {
+    document.getElementById("console-status").innerHTML = state
+      ? "Playing"
+      : "Paused";
   }
-})
+
+  currentMessage++;
+  queueMessage();
+});
+
+function changeState(state) {
+  socket.emit("play-send", state);
+}
 
 window.display = display;
 window.consoleSubmit = consoleSubmit;
 window.consoleStart = consoleStart;
 window.loadScene = loadScene;
+window.changeState = changeState;
