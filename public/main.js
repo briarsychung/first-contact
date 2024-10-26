@@ -138,10 +138,10 @@ document.addEventListener("keydown", (e) => {
     consoleInput.innerHTML = messageValue + (cursorToggle ? " " : "_");*/
     if (currentMessage > -1 && messages[currentMessage].author === 1) {
       let next = messages[currentMessage].content[messageValue.length];
-      if (next) {
-        if (!lock) {
-          messageValue += next;
-        }
+      if (e.key === "Backspace") {
+        messageValue = messageValue.slice(0, -1);
+      } else if (next) {
+        messageValue += next;
       } else if (e.key === "Enter") {
         consoleSendMessage("&lt; " + messageValue);
         consoleSendMessage(" ");
@@ -164,6 +164,7 @@ document.addEventListener("keydown", (e) => {
 });
 
 function queueMessage() {
+  console.log("queued");
   consoleSendMessage("&gt; " + messages[currentMessage].content);
   consoleSendMessage(" ");
 
@@ -189,7 +190,6 @@ socket.on("load-receive", (scene) => {
 });
 
 function consoleLoad(scene) {
-  console.log(messages);
   consoleReset();
   currentMessage = 0;
   for (let i = 0; i < messages.length; i++) {
@@ -210,6 +210,7 @@ function consoleLoad(scene) {
 let consoleContainer = document.getElementById("console-container");
 
 function consoleSendMessage(message) {
+  console.log(message);
   let span = document.createElement("span");
   span.innerHTML = message;
   span.classList.add("console-message");
@@ -229,7 +230,12 @@ function consoleReset() {
 }
 
 socket.on("play-receive", (state) => {
-  console.log(state);
+
+  if (state) {
+    currentMessage++;
+    queueMessage();
+  }
+  
   consolePlaying = state;
 
   if (mode === 2) {
@@ -237,9 +243,6 @@ socket.on("play-receive", (state) => {
       ? "Playing"
       : "Paused";
   }
-
-  currentMessage++;
-  queueMessage();
 });
 
 function changeState(state) {
