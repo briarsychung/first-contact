@@ -2,6 +2,7 @@ const ALIEN_TIME = 2000;
 const LOCK_TIME = 100;
 
 let consolePlaying = false;
+let flightPlaying = false;
 
 const socket = io.connect();
 let mode = 0;
@@ -136,7 +137,11 @@ document.addEventListener("keydown", (e) => {
       messageValue = "";
     }
     consoleInput.innerHTML = messageValue + (cursorToggle ? " " : "_");*/
-    if (consolePlaying && currentMessage > -1 && messages[currentMessage].author === 1) {
+    if (
+      consolePlaying &&
+      currentMessage > -1 &&
+      messages[currentMessage].author === 1
+    ) {
       let next = messages[currentMessage].content[messageValue.length];
       if (e.key === "Backspace") {
         messageValue = messageValue.slice(0, -1);
@@ -229,7 +234,7 @@ function consoleReset() {
 
 socket.on("play-receive", (state) => {
   if (state && !consolePlaying) {
-      currentMessage++;
+    currentMessage++;
     if (messages[currentMessage].author === 0) {
       queueMessage();
     }
@@ -260,13 +265,13 @@ socket.on("remove-receive", () => {
     let removables = document.getElementsByClassName("console-removable");
     removables[removables.length - 1].remove();
     removables[removables.length - 1].remove();
-    
+
     changeState(false);
   }
-})
+});
 
 let flights = [];
-const VEL = 10;
+const VEL = 0.1;
 let time = 0;
 
 fetch("flights.txt")
@@ -275,12 +280,56 @@ fetch("flights.txt")
     flights = text.split("\n");
     for (let i = 0; i < flights.length; i++) {
       let code = flights[i].split("_");
-      flights[i] = [code[0], Number(code[1]) + 0.5, Number(code[2]) / 1000, Number(code[3]) / 1000];
+      flights[i] = {
+        id: code[0],
+        angle: Number(code[1]) + 0.5,
+        pos: {
+        x: Number(code[2]) / 1000,
+        y: Number(code[3]) / 1000,
+        }
+      };
     }
+
+    flightLoad();
   })
   .catch((e) => console.error(e));
 
+function getPosition(start, angle, distance) {
+  return [
+    start.x + distance * Math.cos((Math.PI * angle) / 180),
+    start.y + distance * Math.sin((Math.PI * angle) / 180),
+  ];
+}
 
+function flightLoad() {
+  for (let i = 0; i < flights.length; i++) {
+    let position = getPosition(
+      flights[i].pos,
+      flights[i].angle,
+      VEL * (time - i)
+    );
+    if (position[0] >= 0 && position[0] <= 1 && position[1] >= 0 && position[1] <= 1) {
+      console.log(flights[i]);
+      let span = document.createElement('span');
+      span.id = flights[i].id;
+      span.innerHTML = flights[i].id;
+      span.classList.add('flight-label');
+      span.style.left = (flights[i].pos.x * 100) + '%';
+      span.style.top = (flights[i].pos.y * 100) + '%';
+      document.getElementById('flight-container').appendChild(span);
+    }
+  }
+  
+  flightStep();
+}
+
+function flightStep() {
+  time += 0.01;
+  for (let i = 0; i < flights.length; i++) {
+    let flight = document.getElementById(flights[i].id);
+  }
+  setTimeout(flightStep, 100);
+}
 
 window.display = display;
 window.consoleSubmit = consoleSubmit;
