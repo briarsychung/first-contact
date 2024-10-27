@@ -275,10 +275,12 @@ fetch("flights.txt")
     flights = text.split("\n");
     for (let i = 0; i < flights.length; i++) {
       let code = flights[i].split("_");
-      flights[i] = [code[0], Number(code[1])];
+      flights[i] = [code[0], Number(code[1]) + 0.5, Number(code[2]) / 1000, Number(code[3]) / 1000];
     }
   })
   .catch((e) => console.error(e));
+
+
 
 window.display = display;
 window.consoleSubmit = consoleSubmit;
