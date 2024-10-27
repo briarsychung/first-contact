@@ -64,6 +64,16 @@
           <span class="console-message" id="console-input"> </span>
         </div>
       </div>
+      <div id="window-flight" class="window">
+        <div id="flight-top" class="window-top">
+          <span class="top-title">Radar</span>
+          <span class="material-symbols-outlined top-icon"> minimize </span>
+          <span class="material-symbols-outlined top-icon"> open_in_full </span>
+          <span class="material-symbols-outlined top-icon"> close </span>
+        </div>
+        <div id="flight-container">
+        </div>
+      </div>
     </div>
 
     <div id="screen-control" style="visibility: hidden" class="screen">
@@ -75,13 +85,17 @@
       <button onclick="loadScene(2)">2</button>
       <button onclick="loadScene(4)">4</button>
       <button onclick="loadScene(5)">5</button>
-      <h1>Console</h1>
-      <h2>
-        Status: <span id="console-status">Paused</span>
-      </h2>
+      <!--
       <input id="input-message" />
       <button onclick="consoleSubmit()">Submit</button>
       <br />
+      -->
+      <h1>
+        Console
+      </h1>
+      <h2>
+        Status: <span id="console-status">Paused</span>
+      </h2>
       <button onclick="changeState(true)">Play</button>
       <button onclick="changeState(false)">Pause</button>
       <button onclick="consoleDelete()">Delete Last Message</button>

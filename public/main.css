@@ -5,6 +5,10 @@
   font-family: "Open Sans", sans-serif;
 }
 
+button {
+  padding: 10px;
+}
+
 .screen {
   position: fixed;
   top: 0;
@@ -27,8 +31,6 @@
   display: flex;
   flex-direction: column;
   position: fixed;
-  top: 50px;
-  left: 50px;
 }
 
 .window-top {
@@ -60,10 +62,30 @@
 #window-console {
   background-color: white;
   height: 700px;
-  width: 1100px;
+  width: 900px;
+  top: 50px;
+  left: 50px;
 }
 
 #console-container {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 40px);
+  overflow-x: hidden;
+  overflow-y: scroll;
+  padding: 20px;
+  width: calc(100% - 40px);
+}
+
+#window-flight {
+  background-color: black;
+  height: 500px;
+  width: 500px;
+  top: 25px;
+  left: 1100px;
+}
+
+#flight-container {
   display: flex;
   flex-direction: column;
   height: calc(100% - 40px);
