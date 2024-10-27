@@ -2,7 +2,6 @@ const ALIEN_TIME = 2000;
 const LOCK_TIME = 100;
 
 let consolePlaying = false;
-let flightPlaying = false;
 
 const socket = io.connect();
 let mode = 0;
@@ -271,8 +270,9 @@ socket.on("remove-receive", () => {
 });
 
 let flights = [];
-const VEL = 0.1;
-let time = 0;
+const VEL = 0.01;
+const SPACE = 0.1;
+let time = 10;
 
 fetch("flights.txt")
   .then((res) => res.text())
@@ -284,9 +284,9 @@ fetch("flights.txt")
         id: code[0],
         angle: Number(code[1]) + 0.5,
         pos: {
-        x: Number(code[2]) / 1000,
-        y: Number(code[3]) / 1000,
-        }
+          x: Number(code[2]) / 1000,
+          y: Number(code[3]) / 1000,
+        },
       };
     }
 
@@ -295,40 +295,52 @@ fetch("flights.txt")
   .catch((e) => console.error(e));
 
 function getPosition(start, angle, distance) {
-  return [
-    start.x + distance * Math.cos((Math.PI * angle) / 180),
-    start.y + distance * Math.sin((Math.PI * angle) / 180),
-  ];
+  return {
+    x: start.x + distance * Math.cos((Math.PI * angle) / 180),
+    y: start.y + distance * Math.sin((Math.PI * angle) / 180),
+  };
 }
 
 function flightLoad() {
   for (let i = 0; i < flights.length; i++) {
-    let position = getPosition(
-      flights[i].pos,
-      flights[i].angle,
-      VEL * (time - i)
-    );
-    if (position[0] >= 0 && position[0] <= 1 && position[1] >= 0 && position[1] <= 1) {
-      console.log(flights[i]);
-      let span = document.createElement('span');
-      span.id = flights[i].id;
-      span.innerHTML = flights[i].id;
-      span.classList.add('flight-label');
-      span.style.left = (flights[i].pos.x * 100) + '%';
-      span.style.top = (flights[i].pos.y * 100) + '%';
-      document.getElementById('flight-container').appendChild(span);
-    }
+    console.log(flights[i]);
+    let span = document.createElement("span");
+    span.id = flights[i].id;
+    span.innerHTML = flights[i].id;
+    span.classList.add("flight-label");
+    let colors = ["#ff0", "#0f0", "#0ff"];
+    span.style.color = colors[i % 3];
+    document.getElementById("flight-container").appendChild(span);
   }
-  
+
   flightStep();
 }
 
 function flightStep() {
-  time += 0.01;
+  time += VEL;
   for (let i = 0; i < flights.length; i++) {
     let flight = document.getElementById(flights[i].id);
+
+    let position = getPosition(
+      flights[i].pos,
+      flights[i].angle,
+      SPACE * (time - i)
+    );
+
+    if (
+      position.x >= 0 &&
+      position.x <= 1 &&
+      position.y >= 0 &&
+      position.y <= 1
+    ) {
+      flight.style.display = "initial";
+      flight.style.left = position.x * 100 + "%";
+      flight.style.top = position.y * 100 + "%";
+    } else {
+      flight.style.display = "none";
+    }
   }
-  setTimeout(flightStep, 100);
+  setTimeout(flightStep, 1000);
 }
 
 window.display = display;
