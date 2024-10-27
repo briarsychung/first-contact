@@ -187,6 +187,8 @@ function loadScene(scene) {
 socket.on("load-receive", (scene) => {
   if (mode === 1) {
     consoleLoad(scene);
+    flightTime = FLIGHT_STARTS[scene - 1]; 
+    flightUpdate();
   } else if (mode === 2) {
     document.getElementById("scene-display").innerHTML = scene;
   }
@@ -272,7 +274,8 @@ socket.on("remove-receive", () => {
 let flights = [];
 const VEL = 0.01;
 const SPACE = 0.1;
-let time = 10;
+const FLIGHT_STARTS = [10, 35, 0, 50, 65];
+let flightTime = 10;
 
 fetch("flights.txt")
   .then((res) => res.text())
@@ -317,14 +320,19 @@ function flightLoad() {
 }
 
 function flightStep() {
-  time += VEL;
+  flightTime += VEL;
+  flightUpdate();
+  setTimeout(flightStep, 1000);
+}
+
+function flightUpdate() {
   for (let i = 0; i < flights.length; i++) {
     let flight = document.getElementById(flights[i].id);
 
     let position = getPosition(
       flights[i].pos,
       flights[i].angle,
-      SPACE * (time - i)
+      SPACE * (flightTime - i)
     );
 
     if (
@@ -340,7 +348,6 @@ function flightStep() {
       flight.style.display = "none";
     }
   }
-  setTimeout(flightStep, 1000);
 }
 
 window.display = display;
