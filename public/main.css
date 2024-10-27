@@ -135,7 +135,12 @@ button {
   flex-grow: 1;
   font-family: "Source Code Pro", monospace;
   font-size: 18px;
+  text-align: center;
   white-space: pre;
+}
+
+.radio-zero {
+  color: #202020;
 }
 
 #window-none {

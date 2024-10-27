@@ -353,27 +353,34 @@ function flightUpdate() {
 const RADIO_MAX_ROWS = 18;
 let radioCount = RADIO_MAX_ROWS;
 let radioContainer = document.getElementById("radio-container");
+let wow = false;
 
 function radioLoad() {
   for (let i = 0; i < 32; i++) {
     let column = document.createElement("div");
     column.classList.add("radio-column");
     for (let j = 0; j < RADIO_MAX_ROWS; j++) {
-      column.appendChild(radioGenerate());
+      let span = document.createElement("span");
+      span.innerHTML = radioGenerate();
+      if (span.innerHTML === "0") {
+        span.classList.add("radio-zero");
+      }
+      span.classList.add("radio-output");
+      column.appendChild(span);
     }
     radioContainer.appendChild(column);
   }
-  
+
   radioStep();
 }
 
-function radioGenerate() {
-  let alphanum = " 123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  let output = alphanum[Math.floor(7 * Math.pow(Math.random(), 11))];
-  let span = document.createElement("span");
-  span.innerHTML = output;
-  span.classList.add("radio-output");
-  return span;
+function radioGenerate(big) {
+  let alphanum = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  return alphanum[
+    big
+      ? Math.floor(Math.random() * 36)
+      : Math.floor(7 * Math.pow(Math.random(), 11))
+  ];
 }
 
 radioLoad();
@@ -386,16 +393,27 @@ function radioStep() {
     let column = document.createElement("div");
     column.classList.add("radio-column");
 
+    for (let j = 0; j < RADIO_MAX_ROWS; j++) {
+      let span = document.createElement("span");
+      span.innerHTML = " ";
+      span.classList.add("radio-output");
+      column.appendChild(span);
+    }
+
     radioContainer.insertBefore(column, radioContainer.firstChild);
-    column.appendChild(radioGenerate());
-    
-    radioCount = 1;
-  } else {
-    radioContainer.firstChild.appendChild(radioGenerate());
-    radioCount++;
+
+    radioCount = 0;
   }
-  
-  setTimeout(radioStep, 100);
+
+  let output = radioContainer.firstChild.children[radioCount];
+  output.innerHTML = radioGenerate(wow);
+  if (output.innerHTML === "0") {
+    output.classList.add("radio-zero");
+  }
+
+  radioCount++;
+
+  setTimeout(radioStep, 400);
 }
 
 window.display = display;
