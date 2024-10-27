@@ -78,7 +78,9 @@ button {
 }
 
 #window-flight {
-  background-color: black;
+  background-image: url("https://cdn.glitch.global/f065c294-3788-4460-8446-da39f910b52f/map.png?v=1730051784092");
+  background-position: center;
+  background-size: cover;
   height: 500px;
   width: 500px;
   top: 25px;
