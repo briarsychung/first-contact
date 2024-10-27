@@ -25,4 +25,7 @@ io.sockets.on("connection", (socket) => {
   socket.on("remove-send", (state) => {
     io.emit("remove-receive", state);
   });
+  socket.on("wow-send", (state) => {
+    io.emit("wow-receive", state);
+  });
 });

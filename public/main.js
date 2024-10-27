@@ -234,25 +234,25 @@ function consoleReset() {
 }
 
 socket.on("play-receive", (state) => {
-  if (state && !consolePlaying) {
-    currentMessage++;
-    if (messages[currentMessage].author === 0) {
-      queueMessage();
+  if (mode === 1) {
+    if (state && !consolePlaying) {
+      currentMessage++;
+      if (messages[currentMessage].author === 0) {
+        queueMessage();
+      }
+    } else if (!state && consolePlaying) {
+      currentMessage--;
     }
-  } else if (!state && consolePlaying) {
-    currentMessage--;
-  }
 
-  consolePlaying = state;
-
-  if (mode === 2) {
+    consolePlaying = state;
+  } else if (mode === 2) {
     document.getElementById("console-status").innerHTML = state
       ? "Playing"
       : "Paused";
   }
 });
 
-function changeState(state) {
+function consoleState(state) {
   socket.emit("play-send", state);
 }
 
@@ -267,7 +267,7 @@ socket.on("remove-receive", () => {
     removables[removables.length - 1].remove();
     removables[removables.length - 1].remove();
 
-    changeState(false);
+    consoleState(false);
   }
 });
 
@@ -354,8 +354,10 @@ const RADIO_MAX_ROWS = 18;
 let radioCount = RADIO_MAX_ROWS;
 let radioContainer = document.getElementById("radio-container");
 let wow = false;
+let radioTimeout;
 
-function radioLoad() {
+function radioLoad(preset) {
+  radioCount = RADIO_MAX_ROWS;
   for (let i = 0; i < 32; i++) {
     let column = document.createElement("div");
     column.classList.add("radio-column");
@@ -383,7 +385,7 @@ function radioGenerate(big) {
   ];
 }
 
-radioLoad();
+radioLoad(0);
 
 function radioStep() {
   if (radioCount === RADIO_MAX_ROWS) {
@@ -413,11 +415,33 @@ function radioStep() {
 
   radioCount++;
 
-  setTimeout(radioStep, 400);
+  radioTimeout = setTimeout(radioStep, 500);
+}
+
+socket.on("wow-receive", (state) => {
+  wow = state === 0 ? false : true;
+  if (mode === 1) {
+    if (state !== 3) {
+      let columns = document.getElementsByClassName("radio-column");
+      for (let i = columns.length - 1; i > -1; i--) {
+        columns[i].remove();
+      }
+
+      clearTimeout(radioTimeout);
+      radioLoad(state);
+    }
+  } else if (mode === 2) {
+    document.getElementById("radio-status").innerHTML = state ? "Connected (High)" : "Normal (Low)";
+  }
+});
+
+function radioState(state) {
+  socket.emit("wow-send", state);
 }
 
 window.display = display;
 window.consoleSubmit = consoleSubmit;
 window.loadScene = loadScene;
-window.changeState = changeState;
+window.consoleState = consoleState;
 window.consoleDelete = consoleDelete;
+window.radioState = radioState;
