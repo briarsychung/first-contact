@@ -152,12 +152,26 @@ button {
 }
 
 #weather-container {
-  background-image: url("https://cdn.glitch.global/f065c294-3788-4460-8446-da39f910b52f/snazzy-image(3).png?v=1730070670377");
+  background-image: url("https://cdn.glitch.global/f065c294-3788-4460-8446-da39f910b52f/snazzy-image(3).png?v=1730071417691");
   background-position: center;
   background-size: cover;
   display: flex;
   height: 100%;
   width: 100%;
+}
+
+.weather-icon {
+  color: white;
+  font-size: 60px !important;
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+.weather-temp {
+  color: white;
+  font-size: 60px !important;
+  position: absolute;
+  transform: translate(10px, 10px);
 }
 
 #window-none {
