@@ -189,8 +189,13 @@ socket.on("load-receive", (scene) => {
     consoleLoad(scene);
     flightTime = FLIGHT_STARTS[scene - 1];
     flightUpdate();
+    radioLoad(scene <= 2 ? 0 : 2);
   } else if (mode === 2) {
     document.getElementById("scene-display").innerHTML = scene;
+    
+    document.getElementById("radio-status").innerHTML = scene > 2
+      ? "Connected (High)"
+      : "Normal (Low)";
   }
 });
 
@@ -351,26 +356,41 @@ function flightUpdate() {
 }
 
 const RADIO_MAX_ROWS = 18;
+const RADIO_MAX_COLS = 32;
 let radioCount = RADIO_MAX_ROWS;
 let radioContainer = document.getElementById("radio-container");
 let wow = false;
 let radioTimeout;
 
 function radioLoad(preset) {
+  clearTimeout(radioTimeout);
+  let columns = document.getElementsByClassName("radio-column");
+  for (let i = columns.length - 1; i > -1; i--) {
+    columns[i].remove();
+  }
+  wow = preset === 2;
   radioCount = RADIO_MAX_ROWS;
-  for (let i = 0; i < 32; i++) {
+
+  for (let i = 0; i < RADIO_MAX_COLS; i++) {
     let column = document.createElement("div");
     column.classList.add("radio-column");
     for (let j = 0; j < RADIO_MAX_ROWS; j++) {
+      if (
+        j === Math.floor(RADIO_MAX_ROWS / 2) &&
+        i === Math.floor(RADIO_MAX_COLS / 2) &&
+        preset === 1
+      ) {
+        wow = true;
+      }
       let span = document.createElement("span");
-      span.innerHTML = radioGenerate();
+      span.innerHTML = radioGenerate(wow);
       if (span.innerHTML === "0") {
         span.classList.add("radio-zero");
       }
       span.classList.add("radio-output");
       column.appendChild(span);
     }
-    radioContainer.appendChild(column);
+    radioContainer.insertBefore(column, radioContainer.firstChild);
   }
 
   radioStep();
@@ -422,16 +442,12 @@ socket.on("wow-receive", (state) => {
   wow = state === 0 ? false : true;
   if (mode === 1) {
     if (state !== 3) {
-      let columns = document.getElementsByClassName("radio-column");
-      for (let i = columns.length - 1; i > -1; i--) {
-        columns[i].remove();
-      }
-
-      clearTimeout(radioTimeout);
       radioLoad(state);
     }
   } else if (mode === 2) {
-    document.getElementById("radio-status").innerHTML = state ? "Connected (High)" : "Normal (Low)";
+    document.getElementById("radio-status").innerHTML = state
+      ? "Connected (High)"
+      : "Normal (Low)";
   }
 });
 
