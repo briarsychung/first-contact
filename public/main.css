@@ -78,6 +78,12 @@ button {
   width: calc(100% - 40px);
 }
 
+.console-message {
+  font-family: "Source Code Pro", monospace;
+  font-size: 20px;
+  white-space: pre;
+}
+
 #window-flight {
   background-image: url("https://cdn.glitch.global/f065c294-3788-4460-8446-da39f910b52f/snazzy-image(1).png?v=1730052137913");
   background-position: center;
@@ -103,9 +109,30 @@ button {
   transform: translate(-50%, -50%);
 }
 
-.console-message {
+#window-radio {
+  background-color: black;
+  height: 500px;
+  width: 700px;
+  top: 475px;
+  left: 800px;
+}
+
+#radio-container {
+  display: flex;
+  height: calc(100% - 40px);
+  padding: 20px;
+  width: calc(100% - 40px);
+}
+
+.radio-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.radio-output {
+  color: white;
   font-family: "Source Code Pro", monospace;
-  font-size: 20px;
+  font-size: 18px;
   white-space: pre;
 }
 

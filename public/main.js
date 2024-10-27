@@ -187,7 +187,7 @@ function loadScene(scene) {
 socket.on("load-receive", (scene) => {
   if (mode === 1) {
     consoleLoad(scene);
-    flightTime = FLIGHT_STARTS[scene - 1]; 
+    flightTime = FLIGHT_STARTS[scene - 1];
     flightUpdate();
   } else if (mode === 2) {
     document.getElementById("scene-display").innerHTML = scene;
@@ -349,6 +349,24 @@ function flightUpdate() {
     }
   }
 }
+
+function radioLoad() {
+  for (let i = 0; i < 12; i++) {
+    let column = document.createElement("div");
+    column.classList.add("radio-column");
+    for (let j = 0; j < 16; j++) {
+      let alphanum = " 123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      let output = alphanum[Math.floor(Math.pow(Math.random() * 10, 4) / 1000)];
+      let span = document.createElement("span");
+      span.innerHTML = output;
+      span.classList.add("radio-output");
+      column.appendChild(span);
+    }
+    document.getElementById("radio-container").appendChild(column);
+  }
+}
+
+radioLoad();
 
 window.display = display;
 window.consoleSubmit = consoleSubmit;
