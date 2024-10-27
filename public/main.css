@@ -182,3 +182,20 @@ button {
   left: 0;
   right: 0;
 }
+
+table {
+  background-color: black;
+  color: white;
+  position: absolute;
+  bottom: 15px; right: 15px;
+}
+
+th, td {
+  border: 1px solid #909090;
+  font-family: "Source Code Pro", monospace;
+  font-size: 12px;
+  height: 20px;
+  padding-left: 5px;
+  text-align: left;
+  width: 50px;
+}
