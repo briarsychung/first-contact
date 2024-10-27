@@ -64,7 +64,7 @@ button {
   background-color: white;
   height: 700px;
   width: 900px;
-  top: 50px;
+  top: 25px;
   left: 50px;
 }
 
@@ -85,16 +85,16 @@ button {
 }
 
 #window-flight {
-  background-image: url("https://cdn.glitch.global/f065c294-3788-4460-8446-da39f910b52f/snazzy-image(1).png?v=1730052137913");
-  background-position: center;
-  background-size: cover;
   height: 546px;
   width: 500px;
-  top: 25px;
-  left: 1100px;
+  top: 50px;
+  left: 1150px;
 }
 
 #flight-container {
+  background-image: url("https://cdn.glitch.global/f065c294-3788-4460-8446-da39f910b52f/snazzy-image(1).png?v=1730052137913");
+  background-position: center;
+  background-size: cover;
   height: 100%;
   overflow: hidden;
   position: relative;
@@ -114,7 +114,7 @@ button {
   height: 500px;
   width: 700px;
   top: 475px;
-  left: 800px;
+  left: 900px;
 }
 
 #radio-container {
@@ -141,6 +141,23 @@ button {
 
 .radio-zero {
   color: #202020;
+}
+
+#window-weather {
+  background-color: black;
+  height: 600px;
+  width: 800px;
+  top: 350px;
+  left: 200px;
+}
+
+#weather-container {
+  background-image: url("https://cdn.glitch.global/f065c294-3788-4460-8446-da39f910b52f/snazzy-image(3).png?v=1730070670377");
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  height: 100%;
+  width: 100%;
 }
 
 #window-none {
