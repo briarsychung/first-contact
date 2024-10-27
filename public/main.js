@@ -265,6 +265,21 @@ socket.on("remove-receive", () => {
   }
 })
 
+let flights = [];
+const VEL = 10;
+let time = 0;
+
+fetch("flights.txt")
+  .then((res) => res.text())
+  .then((text) => {
+    flights = text.split("\n");
+    for (let i = 0; i < flights.length; i++) {
+      let code = flights[i].split("_");
+      flights[i] = [code[0], Number(code[1])];
+    }
+  })
+  .catch((e) => console.error(e));
+
 window.display = display;
 window.consoleSubmit = consoleSubmit;
 window.loadScene = loadScene;

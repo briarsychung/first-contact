@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jersey+10&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
 
 * {
   font-family: "Open Sans", sans-serif;
@@ -78,7 +79,7 @@ button {
 }
 
 #window-flight {
-  background-image: url("https://cdn.glitch.global/f065c294-3788-4460-8446-da39f910b52f/map.png?v=1730051784092");
+  background-image: url("https://cdn.glitch.global/f065c294-3788-4460-8446-da39f910b52f/snazzy-image(1).png?v=1730052137913");
   background-position: center;
   background-size: cover;
   height: 500px;
@@ -88,13 +89,18 @@ button {
 }
 
 #flight-container {
-  display: flex;
-  flex-direction: column;
-  height: calc(100% - 40px);
-  overflow-x: hidden;
-  overflow-y: scroll;
-  padding: 20px;
-  width: calc(100% - 40px);
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.flight-label {
+  color: white;
+  font-family: "Jersey 10", sans-serif;
+  left: 100%;
+  position: absolute;
+  transform: translate(-50%, -50%);
 }
 
 .console-message {
