@@ -350,23 +350,53 @@ function flightUpdate() {
   }
 }
 
+const RADIO_MAX_ROWS = 18;
+let radioCount = RADIO_MAX_ROWS;
+let radioContainer = document.getElementById("radio-container");
+
 function radioLoad() {
-  for (let i = 0; i < 12; i++) {
+  for (let i = 0; i < 32; i++) {
     let column = document.createElement("div");
     column.classList.add("radio-column");
-    for (let j = 0; j < 16; j++) {
-      let alphanum = " 123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-      let output = alphanum[Math.floor(Math.pow(Math.random() * 10, 4) / 1000)];
-      let span = document.createElement("span");
-      span.innerHTML = output;
-      span.classList.add("radio-output");
-      column.appendChild(span);
+    for (let j = 0; j < RADIO_MAX_ROWS; j++) {
+      column.appendChild(radioGenerate());
     }
-    document.getElementById("radio-container").appendChild(column);
+    radioContainer.appendChild(column);
   }
+  
+  radioStep();
+}
+
+function radioGenerate() {
+  let alphanum = " 123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  let output = alphanum[Math.floor(7 * Math.pow(Math.random(), 11))];
+  let span = document.createElement("span");
+  span.innerHTML = output;
+  span.classList.add("radio-output");
+  return span;
 }
 
 radioLoad();
+
+function radioStep() {
+  if (radioCount === RADIO_MAX_ROWS) {
+    let columns = document.getElementsByClassName("radio-column");
+    columns[columns.length - 1].remove();
+
+    let column = document.createElement("div");
+    column.classList.add("radio-column");
+
+    radioContainer.insertBefore(column, radioContainer.firstChild);
+    column.appendChild(radioGenerate());
+    
+    radioCount = 1;
+  } else {
+    radioContainer.firstChild.appendChild(radioGenerate());
+    radioCount++;
+  }
+  
+  setTimeout(radioStep, 100);
+}
 
 window.display = display;
 window.consoleSubmit = consoleSubmit;

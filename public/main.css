@@ -127,10 +127,12 @@ button {
 .radio-column {
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
 }
 
 .radio-output {
   color: white;
+  flex-grow: 1;
   font-family: "Source Code Pro", monospace;
   font-size: 18px;
   white-space: pre;
