@@ -464,7 +464,14 @@ socket.on("glitch-receive", () => {
     windowGlitch.style.visibility = "visible";
     setTimeout(() => {
       windowGlitch.style.visibility = "hidden";
-    }, 100);
+    }, 150);
+    setTimeout(() => {
+      windowGlitch.style.visibility = "visible";
+    }, 200);
+    setTimeout(() => {
+      windowGlitch.style.visibility = "hidden";
+    }, 250);
+    radioState(3);
   }
 });
 
