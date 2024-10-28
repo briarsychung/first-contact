@@ -20,12 +20,50 @@
 
   <body>
     <div id="screen-load" class="screen">
-      <button onclick="display(1)">Diplay Harley's Computer</button>
+      <button onclick="display(1)">Display Harley's Computer</button>
       <button onclick="display(2)">Controller View</button>
     </div>
 
     <div id="screen-main" style="visibility: hidden" class="screen">
       <div id="window-none" class="window"></div>
+      <div id="window-console" class="window">
+        <div id="console-top" class="window-top">
+          <span class="top-title">Command Prompt</span>
+          <span class="material-symbols-outlined top-icon"> minimize </span>
+          <span class="material-symbols-outlined top-icon"> open_in_full </span>
+          <span class="material-symbols-outlined top-icon"> close </span>
+        </div>
+        <div id="console-container">
+          <span class="console-message">Pinging 203.0.113.0 with 32 bytes of data:</span>
+          <span class="console-message">Reply from 203.0.113.0: bytes=32 time=24ms TTL=47</span>
+          <span class="console-message">Request timed out.</span>
+          <span class="console-message">Reply from 203.0.113.0: bytes=32 time=28ms TTL=47</span>
+          <span class="console-message">Reply from 203.0.113.0: bytes=32 time=21ms TTL=47</span>
+          <span class="console-message">Reply from 203.0.113.0: bytes=32 time=23ms TTL=47</span>
+          <span class="console-message"> </span>
+          <span class="console-message">Ping statistics for 203.0.113.0:</span>
+          <span class="console-message">    Packets: Sent = 5, Received = 4, Lost = 1 (20% loss),</span>
+          <span class="console-message">Approximate round trip times in milli-seconds:</span>
+          <span class="console-message">    Minimum = 21ms, Maximum = 28ms, Average = 24ms</span>
+          <span class="console-message"> </span>
+          <span class="console-message">Tracing route to fc1124.bysd.harl.net [198.51.100.0]</span>
+          <span class="console-message">over a maximum of 30 hops:</span>
+          <span class="console-message"> </span>
+          <span class="console-message">   1    &lt;1ms    &lt;1ms    &lt;1ms  192.0.2.0</span>
+          <span class="console-message">   2     2ms     1ms     1ms  134.49.278.3</span>
+          <span class="console-message">   3     4ms     5ms     3ms  57.394.45.1</span>
+          <span class="console-message">   4     5ms     5ms     6ms  195.0.552.9</span>
+          <span class="console-message">   5     *       *       *    Request timed out.</span>
+          <span class="console-message">   6    14ms    17ms    15ms  609.67.20.1</span>
+          <span class="console-message"> </span>
+          <span class="console-message">Trace complete.</span>
+          <span class="console-message"> </span>
+          <span class="console-message">Ping received from 192.48.267.1: time=239ms</span>
+          <span class="console-message">New connection established</span>
+          <span class="console-message"> </span>
+          <span class="console-message" id="console-input"> </span>
+        </div>
+      </div>
       <div id="window-satellite" class="window">
         <div id="satellite-top" class="window-top">
           <span class="top-title">Satellite</span>
@@ -121,44 +159,6 @@
           <span class="material-symbols-outlined top-icon"> close </span>
         </div>
         <div id="radio-container">
-        </div>
-      </div>
-      <div id="window-console" class="window">
-        <div id="console-top" class="window-top">
-          <span class="top-title">Command Prompt</span>
-          <span class="material-symbols-outlined top-icon"> minimize </span>
-          <span class="material-symbols-outlined top-icon"> open_in_full </span>
-          <span class="material-symbols-outlined top-icon"> close </span>
-        </div>
-        <div id="console-container">
-          <span class="console-message">Pinging 203.0.113.0 with 32 bytes of data:</span>
-          <span class="console-message">Reply from 203.0.113.0: bytes=32 time=24ms TTL=47</span>
-          <span class="console-message">Request timed out.</span>
-          <span class="console-message">Reply from 203.0.113.0: bytes=32 time=28ms TTL=47</span>
-          <span class="console-message">Reply from 203.0.113.0: bytes=32 time=21ms TTL=47</span>
-          <span class="console-message">Reply from 203.0.113.0: bytes=32 time=23ms TTL=47</span>
-          <span class="console-message"> </span>
-          <span class="console-message">Ping statistics for 203.0.113.0:</span>
-          <span class="console-message">    Packets: Sent = 5, Received = 4, Lost = 1 (20% loss),</span>
-          <span class="console-message">Approximate round trip times in milli-seconds:</span>
-          <span class="console-message">    Minimum = 21ms, Maximum = 28ms, Average = 24ms</span>
-          <span class="console-message"> </span>
-          <span class="console-message">Tracing route to fc1124.bysd.harl.net [198.51.100.0]</span>
-          <span class="console-message">over a maximum of 30 hops:</span>
-          <span class="console-message"> </span>
-          <span class="console-message">   1    &lt;1ms    &lt;1ms    &lt;1ms  192.0.2.0</span>
-          <span class="console-message">   2     2ms     1ms     1ms  134.49.278.3</span>
-          <span class="console-message">   3     4ms     5ms     3ms  57.394.45.1</span>
-          <span class="console-message">   4     5ms     5ms     6ms  195.0.552.9</span>
-          <span class="console-message">   5     *       *       *    Request timed out.</span>
-          <span class="console-message">   6    14ms    17ms    15ms  609.67.20.1</span>
-          <span class="console-message"> </span>
-          <span class="console-message">Trace complete.</span>
-          <span class="console-message"> </span>
-          <span class="console-message">Ping received from 192.48.267.1: time=239ms</span>
-          <span class="console-message">New connection established</span>
-          <span class="console-message"> </span>
-          <span class="console-message" id="console-input"> </span>
         </div>
       </div>
     </div>

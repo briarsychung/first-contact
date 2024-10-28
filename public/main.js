@@ -192,10 +192,9 @@ socket.on("load-receive", (scene) => {
     radioLoad(scene <= 2 ? 0 : 2);
   } else if (mode === 2) {
     document.getElementById("scene-display").innerHTML = scene;
-    
-    document.getElementById("radio-status").innerHTML = scene > 2
-      ? "Connected (High)"
-      : "Normal (Low)";
+
+    document.getElementById("radio-status").innerHTML =
+      scene > 2 ? "Connected (High)" : "Normal (Low)";
   }
 });
 
@@ -461,3 +460,5 @@ window.loadScene = loadScene;
 window.consoleState = consoleState;
 window.consoleDelete = consoleDelete;
 window.radioState = radioState;
+
+consoleContainer.scrollTo(0, consoleContainer.scrollHeight);
