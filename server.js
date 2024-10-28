@@ -28,4 +28,7 @@ io.sockets.on("connection", (socket) => {
   socket.on("wow-send", (state) => {
     io.emit("wow-receive", state);
   });
+  socket.on("glitch-send", (state) => {
+    io.emit("glitch-receive", state);
+  });
 });

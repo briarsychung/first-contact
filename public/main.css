@@ -175,12 +175,19 @@ button {
   transform: translate(12px, 12px);
 }
 
-#window-none {
+#window-none,
+#window-glitch {
   position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
+}
+
+#window-glitch {
+  background-image: url("https://cdn.glitch.global/f065c294-3788-4460-8446-da39f910b52f/Glitch_Art.jpg?v=1730126392278");
+  visibility: hidden;
+  z-index: 1000;
 }
 
 table {

@@ -454,11 +454,26 @@ function radioState(state) {
   socket.emit("wow-send", state);
 }
 
+function glitch() {
+  socket.emit("glitch-send");
+}
+
+let windowGlitch = document.getElementById("window-glitch");
+socket.on("glitch-receive", () => {
+  if (mode === 1) {
+    windowGlitch.style.visibility = "visible";
+    setTimeout(() => {
+      windowGlitch.style.visibility = "hidden";
+    }, 100);
+  }
+});
+
 window.display = display;
 window.consoleSubmit = consoleSubmit;
 window.loadScene = loadScene;
 window.consoleState = consoleState;
 window.consoleDelete = consoleDelete;
 window.radioState = radioState;
+window.glitch = glitch;
 
 consoleContainer.scrollTo(0, consoleContainer.scrollHeight);
