@@ -288,7 +288,7 @@ socket.on("remove-receive", () => {
 });
 
 let flights = [];
-const VEL = 0.01;
+const VEL = 0.03;
 const SPACE = 0.1;
 const FLIGHT_STARTS = [10, 35, 0, 50, 65];
 let flightTime = 10;
@@ -337,7 +337,7 @@ function flightLoad() {
 function flightStep() {
   flightTime += VEL;
   flightUpdate();
-  setTimeout(flightStep, 1000);
+  setTimeout(flightStep, 350);
 }
 
 function flightUpdate() {
@@ -445,7 +445,7 @@ function radioStep() {
 
   radioCount++;
 
-  radioTimeout = setTimeout(radioStep, 500);
+  radioTimeout = setTimeout(radioStep, 150);
 }
 
 socket.on("wow-receive", (state) => {
