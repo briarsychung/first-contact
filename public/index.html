@@ -72,8 +72,7 @@
           <span class="material-symbols-outlined top-icon"> open_in_full </span>
           <span class="material-symbols-outlined top-icon"> close </span>
         </div>
-        <div id="satellite-container">
-        </div>
+        <div id="satellite-container"></div>
       </div>
       <div id="window-flight" class="window">
         <div id="flight-top" class="window-top">
@@ -82,8 +81,7 @@
           <span class="material-symbols-outlined top-icon"> open_in_full </span>
           <span class="material-symbols-outlined top-icon"> close </span>
         </div>
-        <div id="flight-container">
-        </div>
+        <div id="flight-container"></div>
       </div>
       <div id="window-weather" class="window">
         <div id="weather-top" class="window-top">
@@ -93,9 +91,24 @@
           <span class="material-symbols-outlined top-icon"> close </span>
         </div>
         <div id="weather-container">
-          <span class="material-symbols-outlined weather-icon" style="top: 80%; left: 20%"> sunny </span>
-          <span class="material-symbols-outlined weather-icon" style="top: 72.5%; left: 75%"> partly_cloudy_day </span>
-          <span class="material-symbols-outlined weather-icon" style="top: 20%; left: 25%"> sunny </span>
+          <span
+            class="material-symbols-outlined weather-icon"
+            style="top: 80%; left: 20%"
+          >
+            sunny
+          </span>
+          <span
+            class="material-symbols-outlined weather-icon"
+            style="top: 72.5%; left: 75%"
+          >
+            partly_cloudy_day
+          </span>
+          <span
+            class="material-symbols-outlined weather-icon"
+            style="top: 20%; left: 25%"
+          >
+            sunny
+          </span>
           <span class="weather-temp" style="top: 80%; left: 20%"> 16 </span>
           <span class="weather-temp" style="top: 72.5%; left: 75%"> 14 </span>
           <span class="weather-temp" style="top: 20%; left: 25%"> 17 </span>
@@ -159,8 +172,7 @@
           <span class="material-symbols-outlined top-icon"> open_in_full </span>
           <span class="material-symbols-outlined top-icon"> close </span>
         </div>
-        <div id="radio-container">
-        </div>
+        <div id="radio-container"></div>
       </div>
       <div id="window-airdrop" class="window">
         <div id="airdrop-top" class="window-top">
@@ -170,10 +182,29 @@
           <span class="material-symbols-outlined top-icon"> close </span>
         </div>
         <div id="airdrop-container">
-          <span class="material-symbols-outlined airdrop-icon" style="top: 30%; left: 50%"> description </span>
-          <span class="airdrop-name" style="top: 30; left: 50%">CCCR-18_PWQO.exe</span>
-          <span class="material-symbols-outlined airdrop-icon" style="top: 50%; left: 50%; opacity: 0.5"> arrow_downward </span>
-          <span class="material-symbols-outlined airdrop-icon" style="top: 70%; left: 50%"> account_circle </span>
+          <span
+            class="material-symbols-outlined airdrop-icon"
+            style="top: 27.5%; left: 50%"
+            id="airdrop-button"
+            onclick="openFile()"
+          >
+            description
+          </span>
+          <span class="airdrop-name" style="top: 27.5%; left: 50%"
+            >CCCR-18_PWQO.exe</span
+          >
+          <span
+            class="material-symbols-outlined airdrop-icon"
+            style="top: 50%; left: 50%; opacity: 0.5"
+          >
+            arrow_downward
+          </span>
+          <span
+            class="material-symbols-outlined airdrop-icon"
+            style="top: 70%; left: 50%"
+          >
+            account_circle
+          </span>
         </div>
       </div>
       <div id="window-map" class="window">
@@ -183,19 +214,14 @@
           <span class="material-symbols-outlined top-icon"> open_in_full </span>
           <span class="material-symbols-outlined top-icon"> close </span>
         </div>
-        <div id="map-container">
-        </div>
+        <div id="map-container"></div>
       </div>
     </div>
 
     <div id="screen-control" style="visibility: hidden" class="screen">
-      <button onclick="resetZIndex()">
-        Reset Window Order
-      </button>
+      <button onclick="resetZIndex()">Reset Window Order</button>
       <h1>Current Scene: <span id="scene-display">1</span></h1>
-      <h2>
-        Load Scene:
-      </h2>
+      <h2>Load Scene:</h2>
       <button onclick="loadScene(1)">1</button>
       <button onclick="loadScene(2)">2</button>
       <button onclick="loadScene(4)">4</button>
@@ -206,20 +232,12 @@
       <button onclick="consoleSubmit()">Submit</button>
       <br />
       -->
-      <h2>
-        Cue:
-      </h2>
-      <button onclick="glitch()">
-        Flicker + Connect
-      </button>
+      <h2>Cue:</h2>
+      <button onclick="glitch()">Flicker + Connect</button>
       <button onclick="consoleSubmit('> 👍')">Send "👍"</button>
       <button onclick="consoleSubmit('> 🛸🏃🌎💨?')">Send "🛸🏃🌎💨?"</button>
-      <h1>
-        Console
-      </h1>
-      <h2>
-        Status: <span id="console-status">Paused</span>
-      </h2>
+      <h1>Console</h1>
+      <h2>Status: <span id="console-status">Paused</span></h2>
       <button onclick="consoleState(true)">Play</button>
       <button onclick="consoleState(false)">Pause</button>
       <button onclick="consoleDelete()">Delete Last Message</button>
@@ -231,12 +249,8 @@
       <button onclick="consoleSubmit('reset')">reset</button>
       <h2>Message Presets</h2>
       <button onclick="consoleSubmit('> GREETINGS.')">&gt; GREETINGS.</button>-->
-      <h1>
-        Radio
-      </h1>
-      <h2>
-        Status: <span id="radio-status">Normal (Low)</span>
-      </h2>
+      <h1>Radio</h1>
+      <h2>Status: <span id="radio-status">Normal (Low)</span></h2>
       <button onclick="radioState(0)">Reset (Low)</button>
       <button onclick="radioState(1)">Reset (Half)</button>
       <button onclick="radioState(2)">Reset (High)</button>

@@ -493,6 +493,22 @@ function resetZIndex() {
   socket.emit("z-send");
 }
 
+let windowMap = document.getElementById("window-map");
+let mapContainer = document.getElementById("map-container");
+function openFile() {
+  setTimeout(() => {
+    mapContainer.style.transition = "2s";
+    mapContainer.style.backgroundSize = "200%";
+  }, 200);
+  windowMap.style.visibility = "visible";
+}
+
+function closeFile() {
+  mapContainer.style.transition = "0";
+  mapContainer.style.backgroundSize = "100%";
+  windowMap.style.visibility = "hidden";
+}
+
 window.display = display;
 window.consoleSubmit = consoleSubmit;
 window.loadScene = loadScene;
@@ -501,5 +517,6 @@ window.consoleDelete = consoleDelete;
 window.radioState = radioState;
 window.glitch = glitch;
 window.resetZIndex = resetZIndex;
+window.openFile = openFile;
 
 consoleContainer.scrollTo(0, consoleContainer.scrollHeight);

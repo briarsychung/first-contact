@@ -3,7 +3,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Jersey+10&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
 
 * {
+  cursor: pointer;
   font-family: "Open Sans", sans-serif;
+  user-select: none;
 }
 
 button {
@@ -172,6 +174,11 @@ button {
   font-size: 80px !important;
 }
 
+#airdrop-button:hover {
+  background-color: #f0f0f0;
+  border-radius: 10px;
+}
+
 .weather-temp{
   background-color: #f0f0f0;
   border-radius: 20px;
@@ -182,10 +189,11 @@ button {
 }
 
 .airdrop-name {
+  font-family: "Consolas", monospace;
   font-size: 14px;
   padding: 0 5px;
   position: absolute;
-  transform: translate(0, 12px);
+  transform: translate(-50%, 50px);
 }
 
 #window-none,
@@ -241,6 +249,7 @@ th, td {
   width: 700px;
   top: 60px;
   left: 875px;
+  visibility: hidden;
 }
 
 #map-container {
