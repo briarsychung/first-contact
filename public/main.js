@@ -365,8 +365,8 @@ function flightUpdate() {
   }
 }
 
-const RADIO_MAX_ROWS = 18;
-const RADIO_MAX_COLS = 32;
+const RADIO_MAX_ROWS = 24;
+const RADIO_MAX_COLS = 48;
 let radioCount = RADIO_MAX_ROWS;
 let radioContainer = document.getElementById("radio-container");
 let wow = false;

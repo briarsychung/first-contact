@@ -8,6 +8,11 @@
   user-select: none;
 }
 
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
 #screen-control {
   overflow-y: scroll;
 }
@@ -25,8 +30,8 @@ button {
 }
 
 #screen-main {
-  background-color: #303030;
-  background-image: url("https://cdn.glitch.global/f065c294-3788-4460-8446-da39f910b52f/orbit_plot_inner.png?v=1729520054298");
+  background-color: black;
+  /*background-image: url("https://cdn.glitch.global/f065c294-3788-4460-8446-da39f910b52f/orbit_plot_inner.png?v=1729520054298");*/
   background-position: center;
   background-repeat: no-repeat;
 }
@@ -42,7 +47,7 @@ button {
 
 .window-top {
   align-items: center;
-  background-color: #606060;
+  background-color: #404040;
   border-radius: 2.5px 2.5px 0 0;
   color: #e0e0e0;
   display: flex;
@@ -50,7 +55,7 @@ button {
 }
 
 .focused > .window-top {
-  background-color: #404040;
+  background-color: #202020;
   color: white;
 }
 
@@ -61,7 +66,7 @@ button {
 }
 
 .top-icon {
-  background-color: #505050;
+  background-color: #303030;
   border-radius: 15px;
   font-size: 16px !important;
   margin-left: 10px;
@@ -142,7 +147,7 @@ button {
   color: white;
   flex-grow: 1;
   font-family: "Consolas", monospace;
-  font-size: 18px;
+  font-size: 12px;
   text-align: center;
   white-space: pre;
 }
