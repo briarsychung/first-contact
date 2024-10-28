@@ -192,6 +192,8 @@ socket.on("load-receive", (scene, end) => {
     flightTime = FLIGHT_STARTS[scene - 1];
     flightUpdate();
     radioLoad(scene <= 2 ? 0 : 2);
+
+    airdrop(end || scene === 5 ? 2 : 0);
   } else if (mode === 2) {
     document.getElementById("scene-display").innerHTML = scene;
 
@@ -495,6 +497,7 @@ function resetZIndex() {
 
 let windowMap = document.getElementById("window-map");
 let mapContainer = document.getElementById("map-container");
+
 function openFile() {
   setTimeout(() => {
     mapContainer.style.transition = "2s";
@@ -504,10 +507,33 @@ function openFile() {
 }
 
 function closeFile() {
-  mapContainer.style.transition = "0";
+  mapContainer.style.transition = "0s";
   mapContainer.style.backgroundSize = "100%";
   windowMap.style.visibility = "hidden";
 }
+
+let windowAirdrop = document.getElementById("window-airdrop");
+
+function airdrop(state) {
+  socket.emit("airdrop-send", state);
+}
+
+socket.on("airdrop-receive", (state) => {
+  if (mode === 1) {
+    if (state === 1) {
+      windowAirdrop.style.visibility = "visible";
+      closeFile();
+    } else if (state === 0) {
+      windowAirdrop.style.visibility = "hidden";
+      closeFile();
+    } else {
+      windowAirdrop.style.visibility = "visible";
+      mapContainer.style.transition = "0";
+      mapContainer.style.backgroundSize = "200%";
+      windowMap.style.visibility = "visible";
+    }
+  }
+});
 
 window.display = display;
 window.consoleSubmit = consoleSubmit;
@@ -518,5 +544,6 @@ window.radioState = radioState;
 window.glitch = glitch;
 window.resetZIndex = resetZIndex;
 window.openFile = openFile;
+window.airdrop = airdrop;
 
 consoleContainer.scrollTo(0, consoleContainer.scrollHeight);
