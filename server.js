@@ -16,8 +16,8 @@ io.sockets.on("connection", (socket) => {
   socket.on("message-send", (message) => {
     io.emit("message-receive", message);
   });
-  socket.on("load-send", (message) => {
-    io.emit("load-receive", message);
+  socket.on("load-send", (scene, end) => {
+    io.emit("load-receive", scene, end);
   });
   socket.on("play-send", (state) => {
     io.emit("play-receive", state);
@@ -30,5 +30,8 @@ io.sockets.on("connection", (socket) => {
   });
   socket.on("glitch-send", (state) => {
     io.emit("glitch-receive", state);
+  });
+  socket.on("z-send", () => {
+    io.emit("z-receive");
   });
 });

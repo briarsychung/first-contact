@@ -180,13 +180,15 @@ function queueMessage() {
   windowFocus("window-console");
 }
 
-function loadScene(scene) {
-  socket.emit("load-send", scene);
+function loadScene(scene, end) {
+  socket.emit("load-send", scene, end);
 }
 
-socket.on("load-receive", (scene) => {
+socket.on("load-receive", (scene, end) => {
   if (mode === 1) {
-    consoleLoad(scene);
+    resetZIndex();
+
+    consoleLoad(scene, end);
     flightTime = FLIGHT_STARTS[scene - 1];
     flightUpdate();
     radioLoad(scene <= 2 ? 0 : 2);
@@ -198,11 +200,14 @@ socket.on("load-receive", (scene) => {
   }
 });
 
-function consoleLoad(scene) {
+function consoleLoad(scene, end) {
   consoleReset();
   currentMessage = 0;
   for (let i = 0; i < messages.length; i++) {
-    if (messages[i].type === "start" && messages[i].scene === scene) {
+    if (
+      messages[i].type === (end ? "end" : "start") &&
+      messages[i].scene === scene
+    ) {
       break;
     }
     if (messages[i].type === "message") {
@@ -310,7 +315,6 @@ function getPosition(start, angle, distance) {
 
 function flightLoad() {
   for (let i = 0; i < flights.length; i++) {
-    console.log(flights[i]);
     let span = document.createElement("span");
     span.id = flights[i].id;
     span.innerHTML = flights[i].id;
@@ -475,6 +479,20 @@ socket.on("glitch-receive", () => {
   }
 });
 
+socket.on("z-receive", () => {
+  if (mode === 1) {
+    for (let i = 0; i < windows.length; i++) {
+      if (Number(windows[i].style.zIndex) < 990) {
+        windows[i].style.zIndex = "";
+      }
+    }
+  }
+});
+
+function resetZIndex() {
+  socket.emit("z-send");
+}
+
 window.display = display;
 window.consoleSubmit = consoleSubmit;
 window.loadScene = loadScene;
@@ -482,5 +500,6 @@ window.consoleState = consoleState;
 window.consoleDelete = consoleDelete;
 window.radioState = radioState;
 window.glitch = glitch;
+window.resetZIndex = resetZIndex;
 
 consoleContainer.scrollTo(0, consoleContainer.scrollHeight);
