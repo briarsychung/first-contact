@@ -511,6 +511,7 @@ function openFile() {
     mapContainer.style.backgroundSize = "200%";
   }, 200);
   windowMap.style.visibility = "visible";
+  windowFocus("window-map");
 }
 
 function closeFile() {
@@ -530,6 +531,7 @@ socket.on("airdrop-receive", (state) => {
     if (state === 1) {
       windowAirdrop.style.visibility = "visible";
       closeFile();
+      windowFocus("window-airdrop");
     } else if (state === 0) {
       windowAirdrop.style.visibility = "hidden";
       closeFile();
