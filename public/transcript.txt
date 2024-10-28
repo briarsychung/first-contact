@@ -22,8 +22,6 @@ START_4
 1_*then
 0_012
 1_Did you get the file response I sent you?
-0_👍
-0_🛸🏃‍♂️🌎💨?
 END_4
 1_Let’s freaking do it!
 0_👌👌👌

@@ -227,15 +227,17 @@ th, td {
   height: 746px;
   width: 700px;
   top: 60px;
-  left: 1000px;
+  left: 875px;
+  z-index: 999;
 }
 
 #map-container {
-  background-image: url("https://cdn.glitch.global/f065c294-3788-4460-8446-da39f910b52f/hiptyc_2020_16k.png?v=1730128739789");
+  background-image: url("https://cdn.glitch.global/f065c294-3788-4460-8446-da39f910b52f/hiptyc_2020_16k2.png?v=1730129335607");
   background-position: center;
-  background-size: cover;
+  background-size: 100%;
   height: 100%;
   overflow: hidden;
   position: relative;
+  transition: 1s;
   width: 100%;
 }
