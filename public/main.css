@@ -79,7 +79,7 @@ button {
 }
 
 .console-message {
-  font-family: "Source Code Pro", monospace;
+  font-family: "Consolas", monospace;
   font-size: 20px;
   white-space: pre;
 }
@@ -133,7 +133,7 @@ button {
 .radio-output {
   color: white;
   flex-grow: 1;
-  font-family: "Source Code Pro", monospace;
+  font-family: "Consolas", monospace;
   font-size: 18px;
   text-align: center;
   white-space: pre;
@@ -159,20 +159,33 @@ button {
   width: 100%;
 }
 
-.weather-icon {
+.weather-icon,
+.airdrop-icon {
   color: #d0d0d0;
   font-size: 60px !important;
   position: absolute;
   transform: translate(-50%, -50%);
 }
 
-.weather-temp {
+.airdrop-icon {
+  color: #303030;
+  font-size: 80px !important;
+}
+
+.weather-temp{
   background-color: #f0f0f0;
   border-radius: 20px;
   font-size: 14px;
   padding: 0 5px;
   position: absolute;
   transform: translate(12px, 12px);
+}
+
+.airdrop-name {
+  font-size: 14px;
+  padding: 0 5px;
+  position: absolute;
+  transform: translate(0, 12px);
 }
 
 #window-none,
@@ -199,7 +212,7 @@ table {
 
 th, td {
   border: 1px solid #909090;
-  font-family: "Source Code Pro", monospace;
+  font-family: "Consolas", monospace;
   font-size: 12px;
   height: 20px;
   padding-left: 5px;
@@ -234,6 +247,21 @@ th, td {
   background-image: url("https://cdn.glitch.global/f065c294-3788-4460-8446-da39f910b52f/hiptyc_2020_16k2.png?v=1730129335607");
   background-position: center;
   background-size: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+#window-airdrop {
+  background-color: white;
+  height: 600px;
+  width: 400px;
+  top: 150px;
+  left: 250px;
+}
+
+#airdrop-container {
   height: 100%;
   overflow: hidden;
   position: relative;
