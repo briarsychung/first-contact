@@ -222,3 +222,20 @@ th, td {
   height: 100%;
   width: 100%;
 }
+
+#window-map {
+  height: 746px;
+  width: 700px;
+  top: 60px;
+  left: 1000px;
+}
+
+#map-container {
+  background-image: url("https://cdn.glitch.global/f065c294-3788-4460-8446-da39f910b52f/hiptyc_2020_16k.png?v=1730128739789");
+  background-position: center;
+  background-size: cover;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
