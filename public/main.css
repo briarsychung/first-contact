@@ -8,6 +8,10 @@
   user-select: none;
 }
 
+#screen-control {
+  overflow-y: scroll;
+}
+
 button {
   padding: 10px;
 }

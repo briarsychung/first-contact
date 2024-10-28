@@ -186,9 +186,10 @@ function loadScene(scene, end) {
 
 socket.on("load-receive", (scene, end) => {
   if (mode === 1) {
-    resetZIndex();
+    let promise = new Promise(resetZIndex);
 
     consoleLoad(scene, end);
+    console.log(document.getElementById("window-console").style.zIndex)
     flightTime = FLIGHT_STARTS[scene - 1];
     flightUpdate();
     radioLoad(scene <= 2 ? 0 : 2);
@@ -220,6 +221,10 @@ function consoleLoad(scene, end) {
     }
 
     currentMessage++;
+  }
+
+  if (scene >= 4) {
+    windowFocus("window-console");
   }
 }
 
@@ -483,9 +488,11 @@ socket.on("glitch-receive", () => {
 
 socket.on("z-receive", () => {
   if (mode === 1) {
+    z = 1;
     for (let i = 0; i < windows.length; i++) {
       if (Number(windows[i].style.zIndex) < 990) {
         windows[i].style.zIndex = "";
+        console.log("b");
       }
     }
   }
