@@ -199,3 +199,19 @@ th, td {
   text-align: left;
   width: 50px;
 }
+
+#window-satellite {
+  background-color: black;
+  height: 500px;
+  width: 800px;
+  top: 75px;
+  left: 650px;
+}
+
+#satellite-container {
+  background-image: url("https://cdn.glitch.global/f065c294-3788-4460-8446-da39f910b52f/Screenshot%202024-10-27%20at%207.59.24%E2%80%AFPM.png?v=1730073621263");
+  background-position: center;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+}
