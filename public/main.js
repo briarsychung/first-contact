@@ -186,9 +186,9 @@ function loadScene(scene, end) {
 
 socket.on("load-receive", (scene, end) => {
   if (mode === 1) {
-    let promise = new Promise(resetZIndex);
+      resetZIndex();
 
-    consoleLoad(scene, end);
+    setTimeout(() => {consoleLoad(scene, end)},100);
     console.log(document.getElementById("window-console").style.zIndex)
     flightTime = FLIGHT_STARTS[scene - 1];
     flightUpdate();
