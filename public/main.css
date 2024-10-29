@@ -22,11 +22,14 @@ button {
 }
 
 #window-taskbar {
+  justify-content: center;
   background-color: #202020;
-  border: 1px solid #101010;
+  border-radius: 0 !important;
   display: flex;
+  flex-direction: row;
   position: fixed;
   bottom: 0; left: 0; right: 0;
+  z-index: 995;
 }
 
 .screen {
@@ -135,7 +138,7 @@ button {
   background-color: black;
   height: 500px;
   width: 700px;
-  top: 475px;
+  top: 425px;
   left: 900px;
 }
 
@@ -169,7 +172,7 @@ button {
   background-color: black;
   height: 650px;
   width: 900px;
-  top: 300px;
+  top: 250px;
   left: 100px;
 }
 
@@ -184,7 +187,7 @@ button {
 .weather-icon,
 .airdrop-icon {
   color: #d0d0d0;
-  font-size: 60px !important;
+  font-size: 40px !important;
   position: absolute;
   transform: translate(-50%, -50%);
 }
@@ -194,18 +197,24 @@ button {
   font-size: 80px !important;
 }
 
+.taskbar-icon {
+  color: white;
+  font-size: 40px !important;
+  padding: 10px;
+}
+
 #airdrop-button:hover {
   background-color: #f0f0f0;
   border-radius: 10px;
 }
 
-.weather-temp{
+.weather-temp {
   background-color: #f0f0f0;
   border-radius: 20px;
-  font-size: 14px;
+  font-size: 12px;
   padding: 0 5px;
   position: absolute;
-  transform: translate(12px, 12px);
+  transform: translate(8px, 8px);
 }
 
 .airdrop-name {
