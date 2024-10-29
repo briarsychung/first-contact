@@ -21,6 +21,14 @@ button {
   padding: 10px;
 }
 
+#window-taskbar {
+  background-color: #202020;
+  border: 1px solid #101010;
+  display: flex;
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+}
+
 .screen {
   position: fixed;
   top: 0;
@@ -31,14 +39,14 @@ button {
 
 #screen-main {
   background-color: black;
-  background-image: url("https://cdn.glitch.global/f065c294-3788-4460-8446-da39f910b52f/Untitled-1.png?v=1730226473285");
+  background-image: url("https://cdn.glitch.global/f065c294-3788-4460-8446-da39f910b52f/Untitled-1.png?v=1730227105055");
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
 }
 
 .window {
-  border: 1px solid #202020;
+  border: 1px solid #101010;
   border-radius: 5px;
   box-shadow: 0 0 5px #00000080;
   display: flex;
