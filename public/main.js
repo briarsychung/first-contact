@@ -186,10 +186,12 @@ function loadScene(scene, end) {
 
 socket.on("load-receive", (scene, end) => {
   if (mode === 1) {
-      resetZIndex();
+    resetZIndex();
 
-    setTimeout(() => {consoleLoad(scene, end)},100);
-    console.log(document.getElementById("window-console").style.zIndex)
+    setTimeout(() => {
+      consoleLoad(scene, end);
+    }, 100);
+    console.log(document.getElementById("window-console").style.zIndex);
     flightTime = FLIGHT_STARTS[scene - 1];
     flightUpdate();
     radioLoad(scene <= 2 ? 0 : 2);
@@ -542,6 +544,14 @@ socket.on("airdrop-receive", (state) => {
       windowMap.style.visibility = "visible";
     }
   }
+});
+
+let zoomContainer = document.getElementById("zoom-container");
+let zoomImg = document.getElementById("zoom-img");
+zoomContainer.addEventListener("click", (e) => {
+  let rect = zoomContainer.getBoundingClientRect();
+  zoomImg.style.left = 100 * (1 - e.layerX / rect.width) + "%";
+  zoomImg.style.top = 100 * (1 - e.layerY / rect.height) + "%";
 });
 
 window.display = display;
