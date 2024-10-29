@@ -8,6 +8,14 @@
   user-select: none;
 }
 
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 300,
+  'GRAD' -25,
+  'opsz' 48
+}
+
 body {
   width: 100vw;
   height: 100vh;
@@ -139,7 +147,7 @@ button {
   height: 500px;
   width: 700px;
   top: 425px;
-  left: 900px;
+  left: 925px;
 }
 
 #radio-container {
@@ -235,7 +243,7 @@ button {
 }
 
 #window-glitch {
-  background-image: url("https://cdn.glitch.global/f065c294-3788-4460-8446-da39f910b52f/Glitch_Art.jpg?v=1730126392278");
+  background-image: url("https://cdn.glitch.global/f065c294-3788-4460-8446-da39f910b52f/Glitch_Art2.png?v=1730228266898");
   visibility: hidden;
   z-index: 1000;
 }
