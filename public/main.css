@@ -320,6 +320,7 @@ th, td {
   width: 1000px;
   top: 175px;
   left: 350px;
+  overflow: hidden;
 }
 
 #zoom-container {
@@ -333,5 +334,12 @@ th, td {
   position: absolute;
     top: 50%; left: 50%;
   transform: translate(-50%, -50%);
+  width: 100%;
+}
+
+#zoom-clipper {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
   width: 100%;
 }
