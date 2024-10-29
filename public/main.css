@@ -50,7 +50,7 @@ button {
 
 #screen-main {
   background-color: black;
-  background-image: url("https://cdn.glitch.global/f065c294-3788-4460-8446-da39f910b52f/Untitled-1.png?v=1730227105055");
+  /*background-image: url("https://cdn.glitch.global/f065c294-3788-4460-8446-da39f910b52f/Untitled-1.png?v=1730227105055");*/
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -97,8 +97,8 @@ button {
   background-color: white;
   height: 700px;
   width: 900px;
-  top: 25px;
-  left: 50px;
+  top: 20px;
+  left: 30px;
 }
 
 #console-container {
@@ -120,8 +120,8 @@ button {
 #window-flight {
   height: 546px;
   width: 500px;
-  top: 50px;
-  left: 1150px;
+  top: 45px;
+  left: 1170px;
 }
 
 #flight-container {
@@ -181,7 +181,7 @@ button {
   height: 650px;
   width: 900px;
   top: 250px;
-  left: 100px;
+  left: 80px;
 }
 
 #weather-container {
@@ -269,7 +269,7 @@ th, td {
   background-color: black;
   height: 500px;
   width: 800px;
-  top: 65px;
+  top: 60px;
   left: 400px;
 }
 
