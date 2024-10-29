@@ -551,10 +551,10 @@ let zoomImg = document.getElementById("zoom-img");
 zoomContainer.addEventListener("click", (e) => {
   let rect = zoomContainer.getBoundingClientRect();
   zoomImg.style.transition = "2s";
-  zoomImg.style.left = 100 * (1 - (e.clientX - rect.left) / rect.width) + "%";
-  zoomImg.style.top = 100 * (1 - (e.clientY - rect.top) / rect.height) + "%";
+  zoomImg.style.left = 100 * (1 - ((e.clientX - rect.left) / rect.width) / 2 - 0.25) + "%";
+  zoomImg.style.top = 100 * (1 - ((e.clientY - rect.top) / rect.height) / 2 - 0.25) + "%";
   zoomContainer.style.transform = "scale(2)";
-  zoomContainer.style.transition = "2s";
+  zoomContainer.style.transition = "1s";
 });
 
 window.display = display;
