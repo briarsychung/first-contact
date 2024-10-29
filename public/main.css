@@ -31,9 +31,10 @@ button {
 
 #screen-main {
   background-color: black;
-  /*background-image: url("https://cdn.glitch.global/f065c294-3788-4460-8446-da39f910b52f/orbit_plot_inner.png?v=1729520054298");*/
+  background-image: url("https://cdn.glitch.global/f065c294-3788-4460-8446-da39f910b52f/Untitled-1.png?v=1730221448206");
   background-position: center;
   background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .window {
