@@ -550,8 +550,9 @@ let zoomContainer = document.getElementById("zoom-container");
 let zoomImg = document.getElementById("zoom-img");
 zoomContainer.addEventListener("click", (e) => {
   let rect = zoomContainer.getBoundingClientRect();
-  zoomImg.style.left = 100 * (1 - e.layerX / rect.width) + "%";
-  zoomImg.style.top = 100 * (1 - e.layerY / rect.height) + "%";
+  console.log(rect);
+  zoomImg.style.left = 100 * (1 - (e.clientX - rect.left) / rect.width) + "%";
+  zoomImg.style.top = 100 * (1 - (e.clientY - rect.top) / rect.height) + "%";
 });
 
 window.display = display;
