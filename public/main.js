@@ -712,7 +712,7 @@ fetch("images.txt")
 function spamImages() {
   for (let i = 0; i < windowImages.length; i++) {
     setTimeout(() => {
-      windowImages[i].style.visibility = "visible";
+      windowImages[i].style.transform = "translate(0, 0)";
     }, 500 * i);
   }
 }

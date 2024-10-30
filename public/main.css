@@ -391,7 +391,7 @@ td {
 }
 
 .window-image {
-  visibility: hidden;
+  transform: translate(0, 3000px);
 }
 
 .image-img {
