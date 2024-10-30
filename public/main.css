@@ -391,7 +391,8 @@ td {
 }
 
 .window-image {
-  transform: translate(0, 3000px);
+  opacity: 0;
+  z-index: -1;
 }
 
 .image-img {

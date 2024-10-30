@@ -533,7 +533,7 @@ socket.on("z-receive", () => {
   if (mode === 1) {
     z = 1;
     for (let i = 0; i < windows.length; i++) {
-      if (Number(windows[i].style.zIndex) < 990) {
+      if (Number(windows[i].style.zIndex) < 990 && Number(windows[i].style.zIndex) > -1) {
         windows[i].style.zIndex = "";
       }
     }
@@ -709,13 +709,6 @@ fetch("images.txt")
   })
   .catch((e) => console.error(e));
 
-function spamImages() {
-  for (let i = 0; i < windowImages.length; i++) {
-    setTimeout(() => {
-      windowImages[i].style.transform = "translate(0, 0)";
-    }, 500 * i);
-  }
-}
 
 function spam(state) {
   socket.emit("spam-send", state);
@@ -725,8 +718,20 @@ function spam(state) {
 socket.on("spam-receive", (state) => {
   if (mode === 1) {
     if (state) {
-      spamImages();
+  for (let i = 0; i < windowImages.length; i++) {
+    setTimeout(() => {
+      windowImages[i].style.opacity = "1";
+      windowImages[i].style.zIndex = "992";
+    }, 50 * i);
+  }
     } else {
+      
+  for (let i = 0; i < windowImages.length; i++) {
+    setTimeout(() => {
+      windowImages[i].style.opacity = "0";
+      windowImages[i].style.zIndex = "-1";
+    }, 10 * i);
+  }
     }
   }
 });
