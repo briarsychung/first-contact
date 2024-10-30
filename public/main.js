@@ -12,7 +12,7 @@ let emoji = [
   ],
   [
     "🏃",
-    '<img class="emoji" src="https://cdn.glitch.global/f065c294-3788-4460-8446-da39f910b52f/run.png?v=1730298930740">',
+    '<img class="emoji" src="https://cdn.glitch.global/f065c294-3788-4460-8446-da39f910b52f/run.png?v=1730300057420">',
   ],
   [
     "🌎",
@@ -227,7 +227,7 @@ socket.on("load-receive", (scene, end) => {
 
     setTimeout(() => {
       consoleLoad(scene, end);
-    }, 100);
+    }, 150);
     flightTime = FLIGHT_STARTS[scene - 1];
     flightUpdate();
     radioLoad(scene <= 2 ? 0 : 2);
@@ -271,7 +271,7 @@ let consoleContainer = document.getElementById("console-container");
 
 function consoleSendMessage(message) {
   for (let i = 0; i < emoji.length; i++) {
-    message = message.replace(emoji[i][0], emoji[i][1]);
+    message = message.replaceAll(emoji[i][0], emoji[i][1]);
   }
 
   let span = document.createElement("span");
