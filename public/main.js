@@ -1,6 +1,8 @@
 const ALIEN_TIME = 2000;
 const LOCK_TIME = 100;
 
+let emoji = [["👍", '<img class="emoji" src="https://cdn.glitch.global/f065c294-3788-4460-8446-da39f910b52f/like.png?v=1730298927413">']];
+
 let consolePlaying = false;
 
 const socket = io.connect();
@@ -233,6 +235,10 @@ function consoleLoad(scene, end) {
 let consoleContainer = document.getElementById("console-container");
 
 function consoleSendMessage(message) {
+  for (let i = 0; i < emoji.length; i++) {
+    message = message.replace(emoji[i][0], emoji[i][1]);
+  }
+
   let span = document.createElement("span");
   span.innerHTML = message;
   span.classList.add("console-message");
@@ -519,8 +525,8 @@ function openFile() {
 
   setTimeout(() => {
     document.getElementById("map-crosshair").style.visibility = "visible";
-      mapX.style.transition = "0.5s";
-      mapY.style.transition = "0.5s";
+    mapX.style.transition = "0.5s";
+    mapY.style.transition = "0.5s";
     mapX.style.right = "0";
     mapY.style.bottom = "0";
   }, 2000);
@@ -647,5 +653,6 @@ window.resetZIndex = resetZIndex;
 window.openFile = openFile;
 window.airdrop = airdrop;
 window.zoom = zoom;
+window.spam = spam;
 
 consoleContainer.scrollTo(0, consoleContainer.scrollHeight);

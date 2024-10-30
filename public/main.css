@@ -383,3 +383,7 @@ td {
   border: 0.5px solid black;
   left: 50%;
 }
+
+.emoji {
+  width: 16px;
+}
