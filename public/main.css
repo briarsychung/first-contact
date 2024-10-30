@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Jersey+10&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Jersey+10&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
 
 * {
   cursor: pointer;
@@ -9,11 +9,7 @@
 }
 
 .material-symbols-outlined {
-  font-variation-settings:
-  'FILL' 0,
-  'wght' 300,
-  'GRAD' -25,
-  'opsz' 48
+  font-variation-settings: "FILL" 0, "wght" 300, "GRAD" -25, "opsz" 48;
 }
 
 body {
@@ -36,7 +32,9 @@ button {
   display: flex;
   flex-direction: row;
   position: fixed;
-  bottom: 0; left: 0; right: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   z-index: 995;
 }
 
@@ -252,10 +250,12 @@ table {
   background-color: black;
   color: white;
   position: absolute;
-  bottom: 15px; right: 15px;
+  bottom: 15px;
+  right: 15px;
 }
 
-th, td {
+th,
+td {
   border: 1px solid #909090;
   font-family: "Consolas", monospace;
   font-size: 12px;
@@ -332,9 +332,11 @@ th, td {
 
 #zoom-img {
   position: absolute;
-    top: 50%; left: 50%;
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
   width: 100%;
+  transition: transform 
 }
 
 #zoom-clipper {

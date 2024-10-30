@@ -547,14 +547,15 @@ socket.on("airdrop-receive", (state) => {
 });
 
 let zoomContainer = document.getElementById("zoom-container");
+let zoomClipper = document.getElementById("zoom-clipper");
 let zoomImg = document.getElementById("zoom-img");
 zoomContainer.addEventListener("click", (e) => {
   let rect = zoomContainer.getBoundingClientRect();
   zoomImg.style.transition = "2s";
   zoomImg.style.left = 100 * (1 - ((e.clientX - rect.left) / rect.width) / 2 - 0.25) + "%";
   zoomImg.style.top = 100 * (1 - ((e.clientY - rect.top) / rect.height) / 2 - 0.25) + "%";
-  zoomContainer.style.transform = "scale(2)";
-  zoomContainer.style.transition = "1s";
+  zoomClipper.style.transform = "scale(2)";
+  zoomClipper.style.transition = "1s";
 });
 
 window.display = display;
