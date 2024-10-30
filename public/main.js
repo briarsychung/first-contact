@@ -677,6 +677,36 @@ socket.on("zoom-receive", (state) => {
   }
 });
 
+let images = [];
+fetch("images.txt")
+  .then((res) => res.text())
+  .then((text) => {
+    let data = text.split("\n");
+    for (let i = 0; i < data.length; i++) {
+      let code = data[i].split("+");
+      let windowImage = document.createElement("div");
+      windowImage.classList.add("window");
+      windowImage.classList.add("windowImage");
+      windowImage.innerHTML = `
+        <div class="window-top">
+          <span class="top-title">${code[0]}</span>
+          <span class="material-symbols-outlined top-icon"> minimize </span>
+          <span class="material-symbols-outlined top-icon"> open_in_full </span>
+          <span class="material-symbols-outlined top-icon"> close </span>
+        </div>
+        <div class="image-container">
+            <img
+              src="${code[2]}"
+              class="image-img" width="${code[1]}px"
+            />
+        </div>`;
+      windowImage.style.left = 25 * (i + 1) + "px";
+      windowImage.style.top = 25 * ((i % 8) + 1) + "px";
+      document.getElementById("screen-main").appendChild(windowImage);
+    }
+  })
+  .catch((e) => console.error(e));
+
 window.display = display;
 window.consoleSubmit = consoleSubmit;
 window.loadScene = loadScene;
