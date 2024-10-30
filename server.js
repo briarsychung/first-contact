@@ -37,4 +37,7 @@ io.sockets.on("connection", (socket) => {
   socket.on("airdrop-send", (state) => {
     io.emit("airdrop-receive", state);
   });
+  socket.on("zoom-send", (state) => {
+    io.emit("zoom-receive", state);
+  });
 });

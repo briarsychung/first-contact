@@ -506,6 +506,7 @@ function resetZIndex() {
 
 let windowMap = document.getElementById("window-map");
 let mapContainer = document.getElementById("map-container");
+let mapCrosshair = document.getElementById("map-crosshair");
 let mapX = document.getElementById("map-x");
 let mapY = document.getElementById("map-y");
 
@@ -516,12 +517,22 @@ function openFile() {
   }, 200);
   windowMap.style.visibility = "visible";
   windowFocus("window-map");
+
+  setTimeout(() => {
+    document.getElementById("map-crosshair").style.visibility = "visible";
+    mapX.style.right = "0";
+    mapY.style.bottom = "0";
+  }, 2000);
 }
 
 function closeFile() {
   mapContainer.style.transition = "0s";
   mapContainer.style.backgroundSize = "100%";
   windowMap.style.visibility = "hidden";
+}
+
+function closeZoom() {
+  
 }
 
 let windowAirdrop = document.getElementById("window-airdrop");
@@ -536,21 +547,35 @@ socket.on("airdrop-receive", (state) => {
       windowAirdrop.style.visibility = "visible";
       closeFile();
       windowFocus("window-airdrop");
+
+      document.getElementById("map-crosshair").style.visibility = "hidden";
+      mapX.style.right = "100%";
+      mapY.style.bottom = "100%";
     } else if (state === 0) {
       windowAirdrop.style.visibility = "hidden";
       closeFile();
+
+      document.getElementById("map-crosshair").style.visibility = "hidden";
+      mapX.style.right = "100%";
+      mapY.style.bottom = "100%";
     } else {
       windowAirdrop.style.visibility = "visible";
       mapContainer.style.transition = "0";
       mapContainer.style.backgroundSize = "200%";
       windowMap.style.visibility = "visible";
+
+      document.getElementById("map-crosshair").style.visibility = "visible";
+      mapX.style.right = "0";
+      mapY.style.bottom = "0";
     }
   }
 });
 
+let windowZoom = document.getElementById("window-zoom");
 let zoomContainer = document.getElementById("zoom-container");
 let zoomClipper = document.getElementById("zoom-clipper");
 let zoomImg = document.getElementById("zoom-img");
+let zoomCrosshair = document.getElementById("zoom-crosshair");
 let zoomX = document.getElementById("zoom-x");
 let zoomY = document.getElementById("zoom-y");
 zoomContainer.addEventListener("click", (e) => {
@@ -565,11 +590,37 @@ zoomContainer.addEventListener("click", (e) => {
   zoomX.style.top = 100 * ((e.clientY - rect.top) / rect.height) + "%";
   zoomY.style.left = 100 * ((e.clientX - rect.left) / rect.width) + "%";
   setTimeout(() => {
-    document.getElementById("zoom-crosshair").style.visibility = "visible";
+    zoomCrosshair.style.visibility = "visible";
     zoomX.style.right = "0";
     zoomY.style.bottom = "0";
   }, 2000);
 });
+
+
+
+function zoom(state) {
+  socket.emit("zoom-send", state);
+}
+
+socket.on("zoom-receive", (state) => {
+  if (mode === 1) {
+    if (state === 1) {
+      windowZoom.style.visibility = "visible";
+      windowFocus("window-zoom");
+
+      zoomCrosshair.style.visibility = "hidden";
+      zoomX.style.right = "100%";
+      zoomY.style.bottom = "100%";
+    } else if (state === 0) {
+      windowZoom.style.visibility = "hidden";
+
+      zoomCrosshair.style.visibility = "hidden";
+      zoomX.style.right = "100%";
+      zoomY.style.bottom = "100%";
+    }
+  }
+});
+
 
 window.display = display;
 window.consoleSubmit = consoleSubmit;
@@ -581,5 +632,6 @@ window.glitch = glitch;
 window.resetZIndex = resetZIndex;
 window.openFile = openFile;
 window.airdrop = airdrop;
+window.zoom = zoom;
 
 consoleContainer.scrollTo(0, consoleContainer.scrollHeight);

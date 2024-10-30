@@ -321,6 +321,7 @@ td {
   top: 175px;
   left: 350px;
   overflow: hidden;
+  visibility: hidden;
 }
 
 #zoom-container {
@@ -364,4 +365,14 @@ td {
 .line {
   border: 0.5px solid white;
   transition: 0.5s;
+}
+
+#map-x {
+  border: 0.5px solid black;
+  top: 50%;
+}
+
+#map-y {
+  border: 0.5px solid black;
+  left: 50%;
 }

@@ -168,53 +168,31 @@
           <span class="material-symbols-outlined top-icon"> close </span>
         </div>
         <div id="console-container">
-          <span class="console-message"
-            >Pinging 203.0.113.0 with 32 bytes of data:</span
-          >
-          <span class="console-message"
-            >Reply from 203.0.113.0: bytes=32 time=24ms TTL=47</span
-          >
+          <span class="console-message">Pinging 203.0.113.0 with 32 bytes of data:</span>
+          <span class="console-message">Reply from 203.0.113.0: bytes=32 time=24ms TTL=47</span>
           <span class="console-message">Request timed out.</span>
-          <span class="console-message"
-            >Reply from 203.0.113.0: bytes=32 time=28ms TTL=47</span
-          >
-          <span class="console-message"
-            >Reply from 203.0.113.0: bytes=32 time=21ms TTL=47</span
-          >
-          <span class="console-message"
-            >Reply from 203.0.113.0: bytes=32 time=23ms TTL=47</span
-          >
+          <span class="console-message">Reply from 203.0.113.0: bytes=32 time=28ms TTL=47</span>
+          <span class="console-message">Reply from 203.0.113.0: bytes=32 time=21ms TTL=47</span>
+          <span class="console-message">Reply from 203.0.113.0: bytes=32 time=23ms TTL=47</span>
           <span class="console-message"> </span>
           <span class="console-message">Ping statistics for 203.0.113.0:</span>
-          <span class="console-message">
-            Packets: Sent = 5, Received = 4, Lost = 1 (20% loss),</span
-          >
-          <span class="console-message"
-            >Approximate round trip times in milli-seconds:</span
-          >
-          <span class="console-message">
-            Minimum = 21ms, Maximum = 28ms, Average = 24ms</span
-          >
+          <span class="console-message">    Packets: Sent = 5, Received = 4, Lost = 1 (20% loss),</span>
+          <span class="console-message">Approximate round trip times in milli-seconds:</span>
+          <span class="console-message">    Minimum = 21ms, Maximum = 28ms, Average = 24ms</span>
           <span class="console-message"> </span>
-          <span class="console-message"
-            >Tracing route to fc1124.bysd.harl.net [198.51.100.0]</span
-          >
+          <span class="console-message">Tracing route to fc1124.bysd.harl.net [198.51.100.0]</span>
           <span class="console-message">over a maximum of 30 hops:</span>
           <span class="console-message"> </span>
-          <span class="console-message">
-            1 &lt;1ms &lt;1ms &lt;1ms 192.0.2.0</span
-          >
-          <span class="console-message"> 2 2ms 1ms 1ms 134.49.278.3</span>
-          <span class="console-message"> 3 4ms 5ms 3ms 57.394.45.1</span>
-          <span class="console-message"> 4 5ms 5ms 6ms 195.0.552.9</span>
-          <span class="console-message"> 5 * * * Request timed out.</span>
-          <span class="console-message"> 6 14ms 17ms 15ms 609.67.20.1</span>
+          <span class="console-message">   1    &lt;1ms    &lt;1ms    &lt;1ms  192.0.2.0</span>
+          <span class="console-message">   2     2ms     1ms     1ms  134.49.278.3</span>
+          <span class="console-message">   3     4ms     5ms     3ms  57.394.45.1</span>
+          <span class="console-message">   4     5ms     5ms     6ms  195.0.552.9</span>
+          <span class="console-message">   5     *       *       *    Request timed out.</span>
+          <span class="console-message">   6    14ms    17ms    15ms  609.67.20.1</span>
           <span class="console-message"> </span>
           <span class="console-message">Trace complete.</span>
           <span class="console-message"> </span>
-          <span class="console-message"
-            >Ping received from 192.48.267.1: time=239ms</span
-          >
+          <span class="console-message">Ping received from 192.48.267.1: time=239ms</span>
           <span class="console-message">New connection established</span>
           <span class="console-message"> </span>
           <span class="console-message" id="console-input"> </span>
@@ -307,8 +285,12 @@
       <h3>Scene 2</h3>
       <button onclick="glitch()">Flicker + Connect</button>
       <h3>Scene 4</h3>
-      <button onclick="airdrop(1)">Send Map File</button>
-      <button onclick="airdrop(0)">Close Map File</button>
+      <button onclick="airdrop(1)">Send Star Map File</button>
+      <button onclick="airdrop(0)">Close Star Map File</button>
+      <br />
+      <button onclick="zoom(1)">Send Zooming Map</button>
+      <button onclick="zoom(0)">Close Zooming Map</button>
+      <br />
       <button onclick="consoleSubmit('> 👍')">Send "👍"</button>
       <button onclick="consoleSubmit('> 🛸🏃🌎💨?')">Send "🛸🏃🌎💨?"</button>
       <h2>Console: <span id="console-status">Paused</span></h2>
