@@ -191,12 +191,12 @@ socket.on("load-receive", (scene, end) => {
     setTimeout(() => {
       consoleLoad(scene, end);
     }, 100);
-    console.log(document.getElementById("window-console").style.zIndex);
     flightTime = FLIGHT_STARTS[scene - 1];
     flightUpdate();
     radioLoad(scene <= 2 ? 0 : 2);
 
     airdrop(end || scene === 5 ? 2 : 0);
+    zoom(0);
   } else if (mode === 2) {
     document.getElementById("scene-display").innerHTML = scene;
 
@@ -494,7 +494,6 @@ socket.on("z-receive", () => {
     for (let i = 0; i < windows.length; i++) {
       if (Number(windows[i].style.zIndex) < 990) {
         windows[i].style.zIndex = "";
-        console.log("b");
       }
     }
   }
@@ -520,6 +519,8 @@ function openFile() {
 
   setTimeout(() => {
     document.getElementById("map-crosshair").style.visibility = "visible";
+      mapX.style.transition = "0.5s";
+      mapY.style.transition = "0.5s";
     mapX.style.right = "0";
     mapY.style.bottom = "0";
   }, 2000);
@@ -532,7 +533,14 @@ function closeFile() {
 }
 
 function closeZoom() {
-  
+  zoomClipper.style.transition = "0s";
+  zoomClipper.style.transform = "scale(1)";
+
+  zoomImg.style.transition = "0s";
+  zoomImg.style.left = "50%";
+  zoomImg.style.top = "50%";
+
+  windowZoom.style.visibility = "hidden";
 }
 
 let windowAirdrop = document.getElementById("window-airdrop");
@@ -543,6 +551,8 @@ function airdrop(state) {
 
 socket.on("airdrop-receive", (state) => {
   if (mode === 1) {
+    mapX.style.transition = "0s";
+    mapY.style.transition = "0s";
     if (state === 1) {
       windowAirdrop.style.visibility = "visible";
       closeFile();
@@ -591,12 +601,12 @@ zoomContainer.addEventListener("click", (e) => {
   zoomY.style.left = 100 * ((e.clientX - rect.left) / rect.width) + "%";
   setTimeout(() => {
     zoomCrosshair.style.visibility = "visible";
+    zoomY.style.transition = "0.5s";
+    zoomX.style.transition = "0.5s";
     zoomX.style.right = "0";
     zoomY.style.bottom = "0";
   }, 2000);
 });
-
-
 
 function zoom(state) {
   socket.emit("zoom-send", state);
@@ -609,18 +619,22 @@ socket.on("zoom-receive", (state) => {
       windowFocus("window-zoom");
 
       zoomCrosshair.style.visibility = "hidden";
+      zoomY.style.transition = "0s";
+      zoomX.style.transition = "0s";
       zoomX.style.right = "100%";
       zoomY.style.bottom = "100%";
     } else if (state === 0) {
       windowZoom.style.visibility = "hidden";
+      closeZoom();
 
       zoomCrosshair.style.visibility = "hidden";
+      zoomY.style.transition = "0s";
+      zoomX.style.transition = "0s";
       zoomX.style.right = "100%";
       zoomY.style.bottom = "100%";
     }
   }
 });
-
 
 window.display = display;
 window.consoleSubmit = consoleSubmit;

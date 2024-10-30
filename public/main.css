@@ -111,7 +111,7 @@ button {
 
 .console-message {
   font-family: "Consolas", monospace;
-  font-size: 28px;
+  font-size: 20px;
   white-space: pre;
 }
 
@@ -282,6 +282,7 @@ td {
 }
 
 #window-map {
+  background-color: white;
   height: 746px;
   width: 700px;
   top: 60px;
@@ -316,6 +317,7 @@ td {
 }
 
 #window-zoom {
+  background-color: black;
   height: 600px;
   width: 1000px;
   top: 175px;
@@ -348,23 +350,28 @@ td {
 
 .crosshair {
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   visibility: hidden;
 }
 
 .crosshair-x {
   position: absolute;
-  left: 0; right: 100%;
+  left: 0;
+  right: 100%;
 }
 
 .crosshair-y {
   position: absolute;
-  top: 0; bottom: 100%;
+  top: 0;
+  bottom: 100%;
 }
 
-.line {
+#zoom-x,
+#zoom-y {
   border: 0.5px solid white;
-  transition: 0.5s;
 }
 
 #map-x {
