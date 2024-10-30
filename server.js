@@ -40,4 +40,7 @@ io.sockets.on("connection", (socket) => {
   socket.on("zoom-send", (state) => {
     io.emit("zoom-receive", state);
   });
+  socket.on("spam-send", (state) => {
+    io.emit("spam-receive", state);
+  });
 });

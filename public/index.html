@@ -44,7 +44,7 @@
           <span class="material-symbols-outlined top-icon"> open_in_full </span>
           <span class="material-symbols-outlined top-icon"> close </span>
         </div>
-        <div id="satellite-container"></div>
+        <div id="satellite-container" class="container"></div>
       </div>
       <div id="window-flight" class="window">
         <div id="flight-top" class="window-top">
@@ -53,7 +53,7 @@
           <span class="material-symbols-outlined top-icon"> open_in_full </span>
           <span class="material-symbols-outlined top-icon"> close </span>
         </div>
-        <div id="flight-container"></div>
+        <div id="flight-container" class="container"></div>
       </div>
       <div id="window-weather" class="window">
         <div id="weather-top" class="window-top">
@@ -62,7 +62,7 @@
           <span class="material-symbols-outlined top-icon"> open_in_full </span>
           <span class="material-symbols-outlined top-icon"> close </span>
         </div>
-        <div id="weather-container">
+        <div id="weather-container" class="container">
           <span
             class="material-symbols-outlined weather-icon"
             style="top: 75%; left: 10%"
@@ -158,7 +158,7 @@
           <span class="material-symbols-outlined top-icon"> open_in_full </span>
           <span class="material-symbols-outlined top-icon"> close </span>
         </div>
-        <div id="radio-container"></div>
+        <div id="radio-container" class="container"></div>
       </div>
       <div id="window-console" class="window">
         <div id="console-top" class="window-top">
@@ -167,7 +167,7 @@
           <span class="material-symbols-outlined top-icon"> open_in_full </span>
           <span class="material-symbols-outlined top-icon"> close </span>
         </div>
-        <div id="console-container">
+        <div id="console-container" class="container">
           <span class="console-message">Pinging 203.0.113.0 with 32 bytes of data:</span>
           <span class="console-message">Reply from 203.0.113.0: bytes=32 time=24ms TTL=47</span>
           <span class="console-message">Request timed out.</span>
@@ -205,7 +205,7 @@
           <span class="material-symbols-outlined top-icon"> open_in_full </span>
           <span class="material-symbols-outlined top-icon"> close </span>
         </div>
-        <div id="airdrop-container">
+        <div id="airdrop-container" class="container">
           <span
             class="material-symbols-outlined airdrop-icon"
             style="top: 27.5%; left: 50%"
@@ -238,7 +238,7 @@
           <span class="material-symbols-outlined top-icon"> open_in_full </span>
           <span class="material-symbols-outlined top-icon"> close </span>
         </div>
-        <div id="map-container">
+        <div id="map-container" class="container">
           <div id="map-crosshair" class="crosshair">
             <div id="map-x" class="crosshair-x"></div>
             <div id="map-y" class="crosshair-y"></div>
@@ -252,7 +252,7 @@
           <span class="material-symbols-outlined top-icon"> open_in_full </span>
           <span class="material-symbols-outlined top-icon"> close </span>
         </div>
-        <div id="zoom-container">
+        <div id="zoom-container" class="container">
           <div id="zoom-clipper">
             <img
               src="https://cdn.glitch.global/f065c294-3788-4460-8446-da39f910b52f/Untitled-2.png?v=1730235830947"
@@ -283,7 +283,9 @@
       <h2>Cues</h2>
       <h3>Scene 2</h3>
       <button onclick="glitch()">Flicker + Connect</button>
-      <button onclick="spam()">Open Image Spam</button>
+      <br />
+      <button onclick="spam(true)">Open Image Spam</button>
+      <button onclick="spam(false)">Close Image Spam</button>
       <br />
       <button onclick="consoleSubmit('> GREETINGS')">Send "GREETINGS"</button>
       <h3>Scene 4</h3>

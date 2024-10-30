@@ -678,34 +678,58 @@ socket.on("zoom-receive", (state) => {
 });
 
 let images = [];
+let windowImages = [];
 fetch("images.txt")
   .then((res) => res.text())
   .then((text) => {
     let data = text.split("\n");
     for (let i = 0; i < data.length; i++) {
-      let code = data[i].split("+");
+      images[i] = data[i].split("+");
       let windowImage = document.createElement("div");
       windowImage.classList.add("window");
-      windowImage.classList.add("windowImage");
+      windowImage.classList.add("window-image");
       windowImage.innerHTML = `
         <div class="window-top">
-          <span class="top-title">${code[0]}</span>
+          <span class="top-title">${images[i][0]}</span>
           <span class="material-symbols-outlined top-icon"> minimize </span>
           <span class="material-symbols-outlined top-icon"> open_in_full </span>
           <span class="material-symbols-outlined top-icon"> close </span>
         </div>
-        <div class="image-container">
+        <div class="image-container" class="container">
             <img
-              src="${code[2]}"
-              class="image-img" width="${code[1]}px"
+              src="${images[i][2]}"
+              class="image-img" width="${images[i][1]}px"
             />
         </div>`;
       windowImage.style.left = 25 * (i + 1) + "px";
       windowImage.style.top = 25 * ((i % 8) + 1) + "px";
       document.getElementById("screen-main").appendChild(windowImage);
+      windowImages[i] = windowImage;
     }
   })
   .catch((e) => console.error(e));
+
+function spamImages() {
+  for (let i = 0; i < windowImages.length; i++) {
+    setTimeout(() => {
+      windowImages[i].style.visibility = "visible";
+    }, 500 * i);
+  }
+}
+
+function spam(state) {
+  socket.emit("spam-send", state);
+}
+
+
+socket.on("spam-receive", (state) => {
+  if (mode === 1) {
+    if (state) {
+      spamImages();
+    } else {
+    }
+  }
+});
 
 window.display = display;
 window.consoleSubmit = consoleSubmit;
