@@ -534,7 +534,10 @@ socket.on("z-receive", () => {
   if (mode === 1) {
     z = 1;
     for (let i = 0; i < windows.length; i++) {
-      if (Number(windows[i].style.zIndex) < 990 && Number(windows[i].style.zIndex) > -1) {
+      if (
+        Number(windows[i].style.zIndex) < 990 &&
+        Number(windows[i].style.zIndex) > -1
+      ) {
         windows[i].style.zIndex = "";
       }
     }
@@ -702,7 +705,7 @@ fetch("images.txt")
               class="image-img" width="${images[i][1]}px"
             />
         </div>`;
-      windowImage.style.left = (35 * (i + 1)+250) + "px";
+      windowImage.style.left = 35 * (i + 1) + 250 + "px";
       windowImage.style.top = 25 * ((i % 8) + 1) + "px";
       document.getElementById("screen-main").appendChild(windowImage);
       windowImages[i] = windowImage;
@@ -710,31 +713,28 @@ fetch("images.txt")
   })
   .catch((e) => console.error(e));
 
-
 function spam(state) {
   socket.emit("spam-send", state);
 }
 
-
 socket.on("spam-receive", (state) => {
   if (mode === 1) {
     if (state) {
-  for (let i = 0; i < windowImages.length; i++) {
-    setTimeout(() => {
-      windowImages[i].style.transition = "0s";
-      windowImages[i].style.opacity = "1";
-      windowImages[i].style.zIndex = "992";
-    }, 80 * i);
-  }
+      for (let i = 0; i < windowImages.length; i++) {
+        setTimeout(() => {
+          windowImages[i].style.transition = "0s";
+          windowImages[i].style.opacity = "1";
+          windowImages[i].style.zIndex = "992";
+        }, 80 * i);
+      }
     } else {
-      
-  for (let i = 0; i < windowImages.length; i++) {
-    setTimeout(() => {
-      windowImages[i].style.transition = "0.1s";
-      windowImages[i].style.opacity = "0";
-      windowImages[i].style.zIndex = "-1";
-    }, 40 * i);
-  }
+      for (let i = 0; i < windowImages.length; i++) {
+        setTimeout(() => {
+          windowImages[i].style.transition = "0.1s";
+          windowImages[i].style.opacity = "0";
+          windowImages[i].style.zIndex = "-1";
+        }, 40 * i);
+      }
     }
   }
 });
