@@ -234,6 +234,7 @@ socket.on("load-receive", (scene, end) => {
 
     airdrop(end || scene === 5 ? 2 : 0);
     zoom(0);
+    spam(false);
   } else if (mode === 2) {
     document.getElementById("scene-display").innerHTML = scene;
 
@@ -701,7 +702,7 @@ fetch("images.txt")
               class="image-img" width="${images[i][1]}px"
             />
         </div>`;
-      windowImage.style.left = 25 * (i + 1) + "px";
+      windowImage.style.left = (35 * (i + 1)+250) + "px";
       windowImage.style.top = 25 * ((i % 8) + 1) + "px";
       document.getElementById("screen-main").appendChild(windowImage);
       windowImages[i] = windowImage;
@@ -720,17 +721,19 @@ socket.on("spam-receive", (state) => {
     if (state) {
   for (let i = 0; i < windowImages.length; i++) {
     setTimeout(() => {
+      windowImages[i].style.transition = "0s";
       windowImages[i].style.opacity = "1";
       windowImages[i].style.zIndex = "992";
-    }, 50 * i);
+    }, 80 * i);
   }
     } else {
       
   for (let i = 0; i < windowImages.length; i++) {
     setTimeout(() => {
+      windowImages[i].style.transition = "0.1s";
       windowImages[i].style.opacity = "0";
       windowImages[i].style.zIndex = "-1";
-    }, 10 * i);
+    }, 40 * i);
   }
     }
   }
