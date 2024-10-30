@@ -1,7 +1,42 @@
 const ALIEN_TIME = 2000;
 const LOCK_TIME = 100;
 
-let emoji = [["👍", '<img class="emoji" src="https://cdn.glitch.global/f065c294-3788-4460-8446-da39f910b52f/like.png?v=1730298927413">']];
+let emoji = [
+  [
+    "👍",
+    '<img class="emoji" src="https://cdn.glitch.global/f065c294-3788-4460-8446-da39f910b52f/like.png?v=1730298927413">',
+  ],
+  [
+    "🛸",
+    '<img class="emoji" src="https://cdn.glitch.global/f065c294-3788-4460-8446-da39f910b52f/ufo-flying.png?v=1730298933602">',
+  ],
+  [
+    "🏃",
+    '<img class="emoji" src="https://cdn.glitch.global/f065c294-3788-4460-8446-da39f910b52f/run.png?v=1730298930740">',
+  ],
+  [
+    "🌎",
+    '<img class="emoji" src="https://cdn.glitch.global/f065c294-3788-4460-8446-da39f910b52f/globe-earth.png?v=1730298935943">',
+  ],
+
+  [
+    "💨",
+    '<img class="emoji" src="https://cdn.glitch.global/f065c294-3788-4460-8446-da39f910b52f/wind.png?v=1730298938203">',
+  ],
+  [
+    "👌",
+    '<img class="emoji" src="https://cdn.glitch.global/f065c294-3788-4460-8446-da39f910b52f/ok.png?v=1730299399635">',
+  ],
+  [
+    "📡",
+    '<img class="emoji" src="https://cdn.glitch.global/f065c294-3788-4460-8446-da39f910b52f/satellite.png?v=1730299405200">',
+  ],
+
+  [
+    "✅",
+    '<img class="emoji" src="https://cdn.glitch.global/f065c294-3788-4460-8446-da39f910b52f/check-box.png?v=1730299402287">',
+  ],
+];
 
 let consolePlaying = false;
 

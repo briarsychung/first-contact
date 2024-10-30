@@ -385,5 +385,6 @@ td {
 }
 
 .emoji {
-  width: 16px;
+  margin: 0 5px;
+  width: 36px;
 }
