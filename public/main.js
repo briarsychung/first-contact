@@ -506,6 +506,8 @@ function resetZIndex() {
 
 let windowMap = document.getElementById("window-map");
 let mapContainer = document.getElementById("map-container");
+let mapX = document.getElementById("map-x");
+let mapY = document.getElementById("map-y");
 
 function openFile() {
   setTimeout(() => {
@@ -549,13 +551,24 @@ socket.on("airdrop-receive", (state) => {
 let zoomContainer = document.getElementById("zoom-container");
 let zoomClipper = document.getElementById("zoom-clipper");
 let zoomImg = document.getElementById("zoom-img");
+let zoomX = document.getElementById("zoom-x");
+let zoomY = document.getElementById("zoom-y");
 zoomContainer.addEventListener("click", (e) => {
   let rect = zoomContainer.getBoundingClientRect();
   zoomImg.style.transition = "2s";
-  zoomImg.style.left = 100 * (1 - ((e.clientX - rect.left) / rect.width) / 2 - 0.25) + "%";
-  zoomImg.style.top = 100 * (1 - ((e.clientY - rect.top) / rect.height) / 2 - 0.25) + "%";
+  zoomImg.style.left =
+    100 * (1 - (e.clientX - rect.left) / rect.width / 2 - 0.25) + "%";
+  zoomImg.style.top =
+    100 * (1 - (e.clientY - rect.top) / rect.height / 2 - 0.25) + "%";
   zoomClipper.style.transform = "scale(2)";
-  zoomClipper.style.transition = "1s";
+  zoomClipper.style.transition = "2s";
+  zoomX.style.top = 100 * ((e.clientY - rect.top) / rect.height) + "%";
+  zoomY.style.left = 100 * ((e.clientX - rect.left) / rect.width) + "%";
+  setTimeout(() => {
+    document.getElementById("zoom-crosshair").style.visibility = "visible";
+    zoomX.style.right = "0";
+    zoomY.style.bottom = "0";
+  }, 2000);
 });
 
 window.display = display;
