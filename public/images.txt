@@ -7,6 +7,7 @@ move_robotv4.jpg+600+https://cdn.glitch.global/f065c294-3788-4460-8446-da39f910b
 Untitled_Circuit.png+600+https://cdn.glitch.global/f065c294-3788-4460-8446-da39f910b52f/3491359161_1d1ea849ac.jpg?v=1730311206780
 flip_flopper.jpeg+600+https://cdn.glitch.global/f065c294-3788-4460-8446-da39f910b52f/Circuit_diagram.JPG?v=1730311213794
 beacon_FINAL(2)_realfinal.png+600+https://cdn.glitch.global/f065c294-3788-4460-8446-da39f910b52f/Wiring_diagram_of_12V_1A_power_supply.JPG?v=1730311215640
+family.jpeg+700+https://cdn.glitch.global/f065c294-3788-4460-8446-da39f910b52f/IMG_5147.jpg?v=1730389837702
 planets.png+500+https://cdn.glitch.global/f065c294-3788-4460-8446-da39f910b52f/planets.png?v=1730301993180
 solar.bmp+700+https://cdn.glitch.global/f065c294-3788-4460-8446-da39f910b52f/Hand%20Drawing%202.jpg?v=1730311501287
 mom.png+700+https://cdn.glitch.global/f065c294-3788-4460-8446-da39f910b52f/Hand%20drawing%201.jpg?v=1730311494627
