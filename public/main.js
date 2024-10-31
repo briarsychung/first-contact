@@ -519,6 +519,7 @@ let windowGlitch = document.getElementById("window-glitch");
 let windowGlitch2 = document.getElementById("window-glitch2");
 socket.on("glitch-receive", () => {
   let g = mode === 1 ? windowGlitch : windowGlitch2;
+  console.log(mode);
   if (mode === 1 || mode === 3) {
     g.style.visibility = "visible";
     setTimeout(() => {
