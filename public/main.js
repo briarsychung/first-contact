@@ -705,8 +705,8 @@ fetch("images.txt")
               class="image-img" width="${images[i][1]}px"
             />
         </div>`;
-      windowImage.style.left = 35 * (i + 1) + 250 + "px";
-      windowImage.style.top = 25 * ((i % 8) + 1) + "px";
+      windowImage.style.left = 20 * (i + 1) + 150 + "px";
+      windowImage.style.top = 15 * ((i % 10) + 1) + "px";
       document.getElementById("screen-main").appendChild(windowImage);
       windowImages[i] = windowImage;
     }
@@ -733,7 +733,7 @@ socket.on("spam-receive", (state) => {
           windowImages[i].style.transition = "0.1s";
           windowImages[i].style.opacity = "0";
           windowImages[i].style.zIndex = "-1";
-        }, 40 * i);
+        }, 20 * i);
       }
     }
   }
