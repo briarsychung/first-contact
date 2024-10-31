@@ -316,9 +316,9 @@
       <button onclick="radioState(2)">Reset (High)</button>
       <button onclick="radioState(3)">Start Signal</button>
     </div>
-    
+
     <div id="screen-second" style="visibility: hidden" class="screen">
-      <div class="window-taskbar window">
+      <div id="window-taskbar2" class="window">
         <span class="material-symbols-outlined taskbar-icon"> home </span
         ><span class="material-symbols-outlined taskbar-icon"> folder </span
         ><span class="material-symbols-outlined taskbar-icon"> public </span
@@ -330,14 +330,44 @@
       </div>
       <div id="window-glitch2" class="window"></div>
       <div id="window-none2" class="window"></div>
-      <div id="window-satellite" class="window">
-        <div id="satellite-top" class="window-top">
-          <span class="top-title">Satellite</span>
+      <div id="window-loop1" class="window">
+        <div id="loop1-top" class="window-top">
+          <span class="top-title">RIGOL Dashboard</span>
           <span class="material-symbols-outlined top-icon"> minimize </span>
           <span class="material-symbols-outlined top-icon"> open_in_full </span>
           <span class="material-symbols-outlined top-icon"> close </span>
         </div>
-        <div id="satellite-container" class="container"></div>
+        <div id="loop1-container" class="container">
+          <video id="loop1-video" width="1000" autoplay loop >
+            <source src="https://cdn.glitch.global/f065c294-3788-4460-8446-da39f910b52f/loop1.mp4?v=1730396153131" type="video/mp4" />
+          </video>
+        </div>
+      </div>
+      <div id="window-loop2" class="window">
+        <div id="loop2-top" class="window-top">
+          <span class="top-title">Dashboard</span>
+          <span class="material-symbols-outlined top-icon"> minimize </span>
+          <span class="material-symbols-outlined top-icon"> open_in_full </span>
+          <span class="material-symbols-outlined top-icon"> close </span>
+        </div>
+        <div id="loop2-container" class="container">
+          <video id="loop2-video" width="1100" autoplay loop >
+            <source src="https://cdn.glitch.me/f065c294-3788-4460-8446-da39f910b52f/loop2a.mp4?v=1730396162641" type="video/mp4" />
+          </video>
+        </div>
+      </div>
+      <div id="window-loop3" class="window">
+        <div id="loop3-top" class="window-top">
+          <span class="top-title">SIGNAL_AZ4</span>
+          <span class="material-symbols-outlined top-icon"> minimize </span>
+          <span class="material-symbols-outlined top-icon"> open_in_full </span>
+          <span class="material-symbols-outlined top-icon"> close </span>
+        </div>
+        <div id="loop3-container" class="container">
+          <video id="loop3-video" width="800" autoplay loop >
+            <source src="https://cdn.glitch.global/f065c294-3788-4460-8446-da39f910b52f/loop3.mp4?v=1730396167909" type="video/mp4" />
+          </video>
+        </div>
       </div>
     </div>
   </body>

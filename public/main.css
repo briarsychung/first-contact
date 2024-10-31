@@ -25,7 +25,8 @@ button {
   padding: 10px;
 }
 
-.window-taskbar {
+#window-taskbar,
+#window-taskbar2 {
   justify-content: center;
   background-color: #202020;
   border-radius: 0 !important;
@@ -46,7 +47,8 @@ button {
   right: 0;
 }
 
-#screen-main {
+#screen-main,
+#screen-second {
   background-color: black;
   /*background-image: url("https://cdn.glitch.global/f065c294-3788-4460-8446-da39f910b52f/Untitled-1.png?v=1730227105055");*/
   background-position: center;
@@ -404,4 +406,23 @@ td {
 
 .container {
   border-radius: 0 0 4px 4px;
+  display: inherit;
+}
+
+
+#window-loop1 {
+  top: 300px;
+  left: 700px;
+}
+
+
+#window-loop2 {
+  top: 20px;
+  left: 20px;
+}
+
+
+#window-loop3 {
+  top: 20px;
+  left: 900px;
 }
