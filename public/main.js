@@ -514,6 +514,11 @@ socket.on("wow-receive", (state) => {
     document.getElementById("radio-status").innerHTML = state
       ? "Connected (High)"
       : "Normal (Low)";
+  } else if (mode === 3) {
+    loop2aVideo.style.display = state === 0 ? "initial" : "none";
+    loop2bVideo.style.display = state === 0 ? "none" : "initial";
+    loop2aVideo.currentTime = 0;
+    loop2bVideo.currentTime = state === 3 ? 0 : 2;
   }
 });
 
