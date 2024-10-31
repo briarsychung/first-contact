@@ -614,7 +614,7 @@ function openFile() {
   windowFocus("window-map");
 
   setTimeout(() => {
-    document.getElementById("map-crosshair").style.display = "initial";
+    mapCrosshair.style.visibility = "visible";
     mapX.style.transition = "0.5s";
     mapY.style.transition = "0.5s";
     mapX.style.right = "0";
@@ -654,14 +654,14 @@ socket.on("airdrop-receive", (state) => {
       closeFile();
       windowFocus("window-airdrop");
 
-      document.getElementById("map-crosshair").style.display = "none";
+      mapCrosshair.style.visibility = "hidden";
       mapX.style.right = "100%";
       mapY.style.bottom = "100%";
     } else if (state === 0) {
       windowAirdrop.style.display = "none";
       closeFile();
 
-      document.getElementById("map-crosshair").style.display = "none";
+      mapCrosshair.style.visibility = "hidden";
       mapX.style.right = "100%";
       mapY.style.bottom = "100%";
     } else {
@@ -670,7 +670,7 @@ socket.on("airdrop-receive", (state) => {
       mapContainer.style.backgroundSize = "200%";
       windowMap.style.display = "initial";
 
-      document.getElementById("map-crosshair").style.display = "initial";
+      mapCrosshair.style.visibility = "visible";
       mapX.style.right = "0";
       mapY.style.bottom = "0";
     }
@@ -696,7 +696,7 @@ zoomContainer.addEventListener("click", (e) => {
   zoomX.style.top = 100 * ((e.clientY - rect.top) / rect.height) + "%";
   zoomY.style.left = 100 * ((e.clientX - rect.left) / rect.width) + "%";
   setTimeout(() => {
-    zoomCrosshair.style.display = "initial";
+    zoomCrosshair.style.visibility = "visible";
     zoomY.style.transition = "0.5s";
     zoomX.style.transition = "0.5s";
     zoomX.style.right = "0";
@@ -714,7 +714,7 @@ socket.on("zoom-receive", (state) => {
       windowZoom.style.display = "initial";
       windowFocus("window-zoom");
 
-      zoomCrosshair.style.display = "none";
+      zoomCrosshair.style.visibility = "hidden";
       zoomY.style.transition = "0s";
       zoomX.style.transition = "0s";
       zoomX.style.right = "100%";
@@ -723,7 +723,7 @@ socket.on("zoom-receive", (state) => {
       windowZoom.style.display = "none";
       closeZoom();
 
-      zoomCrosshair.style.display = "none";
+      zoomCrosshair.style.visibility = "hidden";
       zoomY.style.transition = "0s";
       zoomX.style.transition = "0s";
       zoomX.style.right = "100%";

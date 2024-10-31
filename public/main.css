@@ -68,7 +68,7 @@ button {
 .window-top {
   align-items: center;
   background-color: #404040;
-  border-radius: 4px 4px 0 0;
+  border-radius: 3px 3px 0 0;
   color: #e0e0e0;
   display: flex;
   padding: 10px 15px;
@@ -315,7 +315,7 @@ td {
   background-color: white;
   height: 746px;
   width: 700px;
-  top: 60px;
+  top: 80px;
   left: 875px;
   display: none;
 }
@@ -384,7 +384,7 @@ td {
   left: 0;
   right: 0;
   bottom: 0;
-  display: none;
+  visibility: hidden;
 }
 
 .crosshair-x {
@@ -426,12 +426,12 @@ td {
 }
 
 .image-img {
-  border-radius: 0 0 4px 4px;
+  border-radius: 0 0 3px 3px;
   display: block;
 }
 
 .container {
-  border-radius: 0 0 4px 4px;
+  border-radius: 0 0 3px 3px;
   display: inherit;
 }
 
