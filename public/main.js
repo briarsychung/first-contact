@@ -45,6 +45,7 @@ let mode = 0;
 let messages = [];
 let currentMessage = 0;
 let sceneStarts = [];
+let currentScene = 1;
 
 fetch("transcript.txt")
   .then((res) => res.text())
@@ -227,6 +228,7 @@ let loop2aVideo = document.getElementById("loop2a-video");
 let loop2bVideo = document.getElementById("loop2b-video");
 
 socket.on("load-receive", (scene, end) => {
+  currentScene = scene;
   if (mode === 1) {
     resetZIndex();
 
@@ -273,7 +275,7 @@ function consoleLoad(scene, end) {
     currentMessage++;
   }
 
-  if (scene >= 4) {
+  if (scene >= 2) {
     windowFocus("window-console");
   }
 }
@@ -558,10 +560,14 @@ socket.on("z-receive", () => {
     for (let i = 0; i < windows.length; i++) {
       if (
         Number(windows[i].style.zIndex) < 990 &&
-        Number(windows[i].style.zIndex) > -1
+        Number(windows[i].style.zIndex) > -2
       ) {
         windows[i].style.zIndex = "";
       }
+    }
+    if (currentScene === 1) {
+      document.getElementById("window-console").style.zIndex = "-1";
+      windowFocus("window-none");
     }
   }
 });
@@ -754,7 +760,7 @@ socket.on("spam-receive", (state) => {
         setTimeout(() => {
           windowImages[i].style.transition = "0.1s";
           windowImages[i].style.opacity = "0";
-          windowImages[i].style.zIndex = "-1";
+          windowImages[i].style.zIndex = "-9";
         }, 20 * i);
       }
     }

@@ -99,6 +99,7 @@ button {
   width: 900px;
   top: 20px;
   left: 30px;
+  z-index: -1;
 }
 
 #console-container {
@@ -242,6 +243,7 @@ button {
   bottom: 0;
   left: 0;
   right: 0;
+  z-index: -5;
 }
 
 #window-glitch,
@@ -397,7 +399,7 @@ td {
 
 .window-image {
   opacity: 0;
-  z-index: -1;
+  z-index: -10;
 }
 
 .image-img {
