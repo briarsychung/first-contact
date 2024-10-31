@@ -223,6 +223,9 @@ function loadScene(scene, end) {
   socket.emit("load-send", scene, end);
 }
 
+let loop2aVideo = document.getElementById("loop2a-video");
+let loop2bVideo = document.getElementById("loop2b-video");
+
 socket.on("load-receive", (scene, end) => {
   if (mode === 1) {
     resetZIndex();
@@ -242,6 +245,11 @@ socket.on("load-receive", (scene, end) => {
 
     document.getElementById("radio-status").innerHTML =
       scene > 2 ? "Connected (High)" : "Normal (Low)";
+  } else if (mode === 3) {
+    loop2aVideo.style.display = scene <= 2 ? "initial" : "none";
+    loop2bVideo.style.display = scene <= 2 ? "none" : "initial";
+    loop2aVideo.currentTime = 0;
+    loop2bVideo.currentTime = 2;
   }
 });
 
@@ -515,6 +523,12 @@ function glitch() {
   socket.emit("glitch-send");
 }
 
+function glitch2() {
+  loop2aVideo.style.display = "none";
+  loop2bVideo.style.display = "initial";
+  loop2bVideo.currentTime = 0;
+}
+
 let windowGlitch = document.getElementById("window-glitch");
 let windowGlitch2 = document.getElementById("window-glitch2");
 socket.on("glitch-receive", () => {
@@ -532,6 +546,9 @@ socket.on("glitch-receive", () => {
       g.style.visibility = "hidden";
     }, 325);
     radioState(3);
+    if (mode === 3) {
+      glitch2();
+    }
   }
 });
 

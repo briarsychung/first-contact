@@ -427,3 +427,7 @@ td {
   top: 20px;
   left: 1100px;
 }
+
+#loop2b-video {
+  display: none;
+}
