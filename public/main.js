@@ -376,13 +376,13 @@ function getPosition(start, angle, distance) {
   };
 }
 
+let colors = ["#ff0", "#0f0", "#0ff"];
 function flightLoad() {
   for (let i = 0; i < flights.length; i++) {
     let span = document.createElement("span");
     span.id = flights[i].id;
     span.innerHTML = flights[i].id;
     span.classList.add("flight-label");
-    let colors = ["#ff0", "#0f0", "#0ff"];
     span.style.color = colors[i % 3];
     document.getElementById("flight-container").appendChild(span);
   }
@@ -396,22 +396,23 @@ function flightStep() {
   setTimeout(flightStep, 350);
 }
 
-function jamPos(pos) {
-  if (Math.random() * 10 < 1) {
+function jamPos(pos, jam) {
+  if (jam) {
     return {
-      x: pos.x + Math.random() * 10,
-      y: pos.y + Math.random() * 10
+      x: pos.x + (Math.random() * 2 - 1) * 0.2,
+      y: pos.y + (Math.random() * 2 - 1) * 0.2
     }
   }
   return pos;
 }
 
 function flightUpdate() {
+  let jam = Math.random() * 5 < 1 && wow;
   for (let i = 0; i < flights.length; i++) {
     let flight = document.getElementById(flights[i].id);
 
     let position = getPosition(
-      jamPos(flights[i].pos),
+      jamPos(flights[i].pos, jam),
       flights[i].angle,
       SPACE * (flightTime - i)
     );
@@ -425,6 +426,7 @@ function flightUpdate() {
       flight.style.display = "initial";
       flight.style.left = position.x * 100 + "%";
       flight.style.top = position.y * 100 + "%";
+      flight.style.color = jam ? "red" : colors[i % 3];
     } else {
       flight.style.display = "none";
     }
@@ -782,7 +784,7 @@ socket.on("spam-receive", (state) => {
           windowImages[i].style.transition = "0.1s";
           windowImages[i].style.opacity = "0";
           windowImages[i].style.zIndex = "-9";
-        }, 20 * i);
+        }, 5 * i);
       }
     }
   }
