@@ -786,3 +786,14 @@ window.zoom = zoom;
 window.spam = spam;
 
 consoleContainer.scrollTo(0, consoleContainer.scrollHeight);
+
+let satellite = 0;
+function satelliteStep() {
+  satellite = satellite >= 100 ? 0 : satellite + 0.05;
+  document.getElementById("satellite-container").style.backgroundPosition = satellite + "%";
+  setTimeout(() => {
+    satelliteStep();
+  }, 15);
+}
+
+satelliteStep();

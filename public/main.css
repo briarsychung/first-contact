@@ -235,9 +235,13 @@ button {
 }
 
 #window-none,
-#window-glitch,
+#window-glitch-a,
+#window-glitch-b,
+#window-glitch-c,
 #window-none2,
-#window-glitch2 {
+#window-glitch2-a,
+#window-glitch2-b,
+#window-glitch2-c {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -246,8 +250,13 @@ button {
   z-index: -5;
 }
 
-#window-glitch,
-#window-glitch2 {
+#window-none,
+#window-glitch-a,
+#window-glitch-b,
+#window-glitch-c,
+#window-glitch2-a,
+#window-glitch2-b,
+#window-glitch2-c {
   background-image: url("https://cdn.glitch.global/f065c294-3788-4460-8446-da39f910b52f/Glitch_Art2.png?v=1730228266898");
   visibility: hidden;
   z-index: 1000;
@@ -274,16 +283,16 @@ td {
 
 #window-satellite {
   background-color: black;
-  height: 500px;
-  width: 800px;
+  height: 600px;
+  width: 500px;
   top: 60px;
-  left: 400px;
+  left: 700px;
 }
 
 #satellite-container {
   background-image: url("https://cdn.glitch.global/f065c294-3788-4460-8446-da39f910b52f/Screenshot%202024-10-27%20at%208.07.35%E2%80%AFPM.png?v=1730074068273");
-  background-position: center;
-  background-size: cover;
+  background-position: 0%;
+  background-size: 220%;
   height: 100%;
   width: 100%;
 }
