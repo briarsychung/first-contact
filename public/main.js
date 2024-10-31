@@ -76,13 +76,13 @@ fetch("transcript.txt")
 
 function display(screen) {
   if (screen === 1) {
-    document.getElementById("screen-main").style.visibility = "visible";
+    document.getElementById("screen-main").style.display = "initial";
   } else if (screen === 2) {
-    document.getElementById("screen-control").style.visibility = "visible";
+    document.getElementById("screen-control").style.display = "initial";
   } else if (screen === 3) {
-    document.getElementById("screen-second").style.visibility = "visible";
+    document.getElementById("screen-second").style.display = "initial";
   }
-  document.getElementById("screen-load").style.visibility = "hidden";
+  document.getElementById("screen-load").style.display = "none";
   mode = screen;
 }
 
@@ -554,21 +554,21 @@ socket.on("glitch-receive", () => {
   let g = mode === 1 ? windowGlitch : windowGlitch2;
   console.log(mode);
   if (mode === 1 || mode === 3) {
-    g[0].style.visibility = "visible";
+    g[0].style.display = "initial";
     setTimeout(() => {
-      g[0].style.visibility = "hidden";
+      g[0].style.display = "none";
     }, 200);
     setTimeout(() => {
-      g[1].style.visibility = "visible";
+      g[1].style.display = "initial";
     }, 500);
     setTimeout(() => {
-      g[1].style.visibility = "hidden";
+      g[1].style.display = "none";
     }, 650);
     setTimeout(() => {
-      g[2].style.visibility = "visible";
+      g[2].style.display = "initial";
     }, 700);
     setTimeout(() => {
-      g[2].style.visibility = "hidden";
+      g[2].style.display = "none";
     }, 850);
     radioState(3);
     if (mode === 3) {
@@ -610,11 +610,11 @@ function openFile() {
     mapContainer.style.transition = "2s";
     mapContainer.style.backgroundSize = "200%";
   }, 200);
-  windowMap.style.visibility = "visible";
+  windowMap.style.display = "initial";
   windowFocus("window-map");
 
   setTimeout(() => {
-    document.getElementById("map-crosshair").style.visibility = "visible";
+    document.getElementById("map-crosshair").style.display = "initial";
     mapX.style.transition = "0.5s";
     mapY.style.transition = "0.5s";
     mapX.style.right = "0";
@@ -625,7 +625,7 @@ function openFile() {
 function closeFile() {
   mapContainer.style.transition = "0s";
   mapContainer.style.backgroundSize = "100%";
-  windowMap.style.visibility = "hidden";
+  windowMap.style.display = "none";
 }
 
 function closeZoom() {
@@ -636,7 +636,7 @@ function closeZoom() {
   zoomImg.style.left = "50%";
   zoomImg.style.top = "50%";
 
-  windowZoom.style.visibility = "hidden";
+  windowZoom.style.display = "none";
 }
 
 let windowAirdrop = document.getElementById("window-airdrop");
@@ -650,27 +650,27 @@ socket.on("airdrop-receive", (state) => {
     mapX.style.transition = "0s";
     mapY.style.transition = "0s";
     if (state === 1) {
-      windowAirdrop.style.visibility = "visible";
+      windowAirdrop.style.display = "initial";
       closeFile();
       windowFocus("window-airdrop");
 
-      document.getElementById("map-crosshair").style.visibility = "hidden";
+      document.getElementById("map-crosshair").style.display = "none";
       mapX.style.right = "100%";
       mapY.style.bottom = "100%";
     } else if (state === 0) {
-      windowAirdrop.style.visibility = "hidden";
+      windowAirdrop.style.display = "none";
       closeFile();
 
-      document.getElementById("map-crosshair").style.visibility = "hidden";
+      document.getElementById("map-crosshair").style.display = "none";
       mapX.style.right = "100%";
       mapY.style.bottom = "100%";
     } else {
-      windowAirdrop.style.visibility = "visible";
+      windowAirdrop.style.display = "initial";
       mapContainer.style.transition = "0";
       mapContainer.style.backgroundSize = "200%";
-      windowMap.style.visibility = "visible";
+      windowMap.style.display = "initial";
 
-      document.getElementById("map-crosshair").style.visibility = "visible";
+      document.getElementById("map-crosshair").style.display = "initial";
       mapX.style.right = "0";
       mapY.style.bottom = "0";
     }
@@ -696,7 +696,7 @@ zoomContainer.addEventListener("click", (e) => {
   zoomX.style.top = 100 * ((e.clientY - rect.top) / rect.height) + "%";
   zoomY.style.left = 100 * ((e.clientX - rect.left) / rect.width) + "%";
   setTimeout(() => {
-    zoomCrosshair.style.visibility = "visible";
+    zoomCrosshair.style.display = "initial";
     zoomY.style.transition = "0.5s";
     zoomX.style.transition = "0.5s";
     zoomX.style.right = "0";
@@ -711,19 +711,19 @@ function zoom(state) {
 socket.on("zoom-receive", (state) => {
   if (mode === 1) {
     if (state === 1) {
-      windowZoom.style.visibility = "visible";
+      windowZoom.style.display = "initial";
       windowFocus("window-zoom");
 
-      zoomCrosshair.style.visibility = "hidden";
+      zoomCrosshair.style.display = "none";
       zoomY.style.transition = "0s";
       zoomX.style.transition = "0s";
       zoomX.style.right = "100%";
       zoomY.style.bottom = "100%";
     } else if (state === 0) {
-      windowZoom.style.visibility = "hidden";
+      windowZoom.style.display = "none";
       closeZoom();
 
-      zoomCrosshair.style.visibility = "hidden";
+      zoomCrosshair.style.display = "none";
       zoomY.style.transition = "0s";
       zoomX.style.transition = "0s";
       zoomX.style.right = "100%";

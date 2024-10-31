@@ -256,7 +256,9 @@ button {
 #window-glitch2-a,
 #window-glitch2-b,
 #window-glitch2-c {
-  visibility: hidden;
+  background-size: cover;
+  background-position: center;
+  display: none;
   z-index: 1000;
 }
 
@@ -315,7 +317,7 @@ td {
   width: 700px;
   top: 60px;
   left: 875px;
-  visibility: hidden;
+  display: none;
 }
 
 #map-container {
@@ -334,7 +336,7 @@ td {
   width: 400px;
   top: 150px;
   left: 250px;
-  visibility: hidden;
+  display: none;
 }
 
 #airdrop-container {
@@ -351,7 +353,7 @@ td {
   top: 175px;
   left: 350px;
   overflow: hidden;
-  visibility: hidden;
+  display: none;
 }
 
 #zoom-container {
@@ -382,7 +384,7 @@ td {
   left: 0;
   right: 0;
   bottom: 0;
-  visibility: hidden;
+  display: none;
 }
 
 .crosshair-x {
