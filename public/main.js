@@ -78,6 +78,8 @@ function display(screen) {
     document.getElementById("screen-main").style.visibility = "visible";
   } else if (screen === 2) {
     document.getElementById("screen-control").style.visibility = "visible";
+  } else if (screen === 3) {
+    document.getElementById("screen-second").style.visibility = "visible";
   }
   document.getElementById("screen-load").style.visibility = "hidden";
   mode = screen;
@@ -136,7 +138,7 @@ for (let i = 0; i < windows.length; i++) {
 function windowFocus(windowId) {
   document.getElementById(focused).classList.remove("focused");
 
-  if (windowId !== "window-none") {
+  if (windowId !== "window-none" && windowId !== "window-none2") {
     document.getElementById(windowId).style.zIndex = z;
     z++;
   }
@@ -514,17 +516,19 @@ function glitch() {
 }
 
 let windowGlitch = document.getElementById("window-glitch");
+let windowGlitch2 = document.getElementById("window-glitch2");
 socket.on("glitch-receive", () => {
-  if (mode === 1) {
-    windowGlitch.style.visibility = "visible";
+  let g = mode === 1 ? windowGlitch : windowGlitch2;
+  if (mode === 1 || mode === 3) {
+    g.style.visibility = "visible";
     setTimeout(() => {
-      windowGlitch.style.visibility = "hidden";
+      g.style.visibility = "hidden";
     }, 200);
     setTimeout(() => {
-      windowGlitch.style.visibility = "visible";
+      g.style.visibility = "visible";
     }, 275);
     setTimeout(() => {
-      windowGlitch.style.visibility = "hidden";
+      g.style.visibility = "hidden";
     }, 325);
     radioState(3);
   }

@@ -20,7 +20,8 @@
 
   <body>
     <div id="screen-load" class="screen">
-      <button onclick="display(1)">Display Harley's Computer</button>
+      <button onclick="display(1)">Display Harley's Main Monitor</button>
+      <button onclick="display(3)">Display Harley's Second Monitor</button>
       <button onclick="display(2)">Controller View</button>
     </div>
 
@@ -314,6 +315,30 @@
       <button onclick="radioState(1)">Reset (Half)</button>
       <button onclick="radioState(2)">Reset (High)</button>
       <button onclick="radioState(3)">Start Signal</button>
+    </div>
+    
+    <div id="screen-second" style="visibility: hidden" class="screen">
+      <div class="window-taskbar window">
+        <span class="material-symbols-outlined taskbar-icon"> home </span
+        ><span class="material-symbols-outlined taskbar-icon"> folder </span
+        ><span class="material-symbols-outlined taskbar-icon"> public </span
+        ><span class="material-symbols-outlined taskbar-icon"> terminal </span
+        ><span class="material-symbols-outlined taskbar-icon">
+          deployed_code </span
+        ><span class="material-symbols-outlined taskbar-icon"> map </span
+        ><span class="material-symbols-outlined taskbar-icon"> sunny </span>
+      </div>
+      <div id="window-glitch2" class="window"></div>
+      <div id="window-none2" class="window"></div>
+      <div id="window-satellite" class="window">
+        <div id="satellite-top" class="window-top">
+          <span class="top-title">Satellite</span>
+          <span class="material-symbols-outlined top-icon"> minimize </span>
+          <span class="material-symbols-outlined top-icon"> open_in_full </span>
+          <span class="material-symbols-outlined top-icon"> close </span>
+        </div>
+        <div id="satellite-container" class="container"></div>
+      </div>
     </div>
   </body>
 </html>

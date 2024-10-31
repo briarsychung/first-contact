@@ -25,7 +25,7 @@ button {
   padding: 10px;
 }
 
-#window-taskbar {
+.window-taskbar {
   justify-content: center;
   background-color: #202020;
   border-radius: 0 !important;
@@ -232,7 +232,9 @@ button {
 }
 
 #window-none,
-#window-glitch {
+#window-glitch,
+#window-none2,
+#window-glitch2 {
   position: fixed;
   top: 0;
   bottom: 0;
