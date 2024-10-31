@@ -250,18 +250,30 @@ button {
   z-index: -5;
 }
 
-#window-none,
 #window-glitch-a,
 #window-glitch-b,
 #window-glitch-c,
 #window-glitch2-a,
 #window-glitch2-b,
 #window-glitch2-c {
-  background-image: url("https://cdn.glitch.global/f065c294-3788-4460-8446-da39f910b52f/Glitch_Art2.png?v=1730228266898");
   visibility: hidden;
   z-index: 1000;
 }
 
+#window-glitch-a,
+#window-glitch2-a{
+  background-image: url("https://cdn.glitch.global/f065c294-3788-4460-8446-da39f910b52f/glitch1.png?v=1730403954996");
+}
+
+#window-glitch-b,
+#window-glitch2-b {
+  background-image: url("https://cdn.glitch.global/f065c294-3788-4460-8446-da39f910b52f/glitch2.png?v=1730403957811");
+}
+
+#window-glitch-c,
+#window-glitch2-c {
+  background-image: url("https://cdn.glitch.global/f065c294-3788-4460-8446-da39f910b52f/glitch3.png?v=1730403959969");
+}
 table {
   background-color: black;
   color: white;
@@ -421,18 +433,15 @@ td {
   display: inherit;
 }
 
-
 #window-loop1 {
   top: 350px;
   left: 800px;
 }
 
-
 #window-loop2 {
   top: 20px;
   left: 20px;
 }
-
 
 #window-loop3 {
   top: 20px;

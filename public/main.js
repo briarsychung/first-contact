@@ -396,12 +396,22 @@ function flightStep() {
   setTimeout(flightStep, 350);
 }
 
+function jamPos(pos) {
+  if (Math.random() * 10 < 1) {
+    return {
+      x: pos.x + Math.random() * 10,
+      y: pos.y + Math.random() * 10
+    }
+  }
+  return pos;
+}
+
 function flightUpdate() {
   for (let i = 0; i < flights.length; i++) {
     let flight = document.getElementById(flights[i].id);
 
     let position = getPosition(
-      flights[i].pos,
+      jamPos(flights[i].pos),
       flights[i].angle,
       SPACE * (flightTime - i)
     );
@@ -501,7 +511,7 @@ function radioStep() {
 
   radioCount++;
 
-  radioTimeout = setTimeout(radioStep, 150);
+  radioTimeout = setTimeout(radioStep, wow ? 50 : 200);
 }
 
 socket.on("wow-receive", (state) => {
@@ -536,22 +546,28 @@ function glitch2() {
   loop2bVideo.currentTime = 0;
 }
 
-let windowGlitch = document.getElementById("window-glitch");
-let windowGlitch2 = document.getElementById("window-glitch2");
+let windowGlitch = [document.getElementById("window-glitch-a"), document.getElementById("window-glitch-b"), document.getElementById("window-glitch-c")];
+let windowGlitch2 = [document.getElementById("window-glitch2-a"), document.getElementById("window-glitch2-b"), document.getElementById("window-glitch2-c")];
 socket.on("glitch-receive", () => {
   let g = mode === 1 ? windowGlitch : windowGlitch2;
   console.log(mode);
   if (mode === 1 || mode === 3) {
-    g.style.visibility = "visible";
+    g[0].style.visibility = "visible";
     setTimeout(() => {
-      g.style.visibility = "hidden";
+      g[0].style.visibility = "hidden";
     }, 200);
     setTimeout(() => {
-      g.style.visibility = "visible";
-    }, 275);
+      g[1].style.visibility = "visible";
+    }, 500);
     setTimeout(() => {
-      g.style.visibility = "hidden";
-    }, 325);
+      g[1].style.visibility = "hidden";
+    }, 650);
+    setTimeout(() => {
+      g[2].style.visibility = "visible";
+    }, 700);
+    setTimeout(() => {
+      g[2].style.visibility = "hidden";
+    }, 850);
     radioState(3);
     if (mode === 3) {
       glitch2();
@@ -789,11 +805,11 @@ consoleContainer.scrollTo(0, consoleContainer.scrollHeight);
 
 let satellite = 0;
 function satelliteStep() {
-  satellite = satellite >= 100 ? 0 : satellite + 0.05;
+  satellite = satellite >= 100 ? 0 : satellite + 0.5;
   document.getElementById("satellite-container").style.backgroundPosition = satellite + "%";
   setTimeout(() => {
     satelliteStep();
-  }, 15);
+  }, 1000);
 }
 
 satelliteStep();
