@@ -301,6 +301,7 @@
 
     <div id="screen-control" style="display: none" class="screen">
       <button onclick="resetZIndex()">Reset Window Order</button>
+      <button onclick="debug()">[DEBUG]</button>
       <h1>Current Scene: <span id="scene-display">1</span></h1>
       <button onclick="loadScene(1)">1</button>
       <button onclick="loadScene(2)">2</button>
@@ -322,11 +323,11 @@
       <button onclick="consoleSubmit('> GREETINGS')">Send "GREETINGS"</button>
       <h3>Scene 4</h3>
       <button onclick="airdrop(1)">Send Star Map File</button>
-      <br />
       <button onclick="zoom(1)">Send Zooming Map</button>
-      <button onclick="zoom(0)">Close Zooming Map</button>
       <br />
       <button onclick="consoleSubmit('> 👍')">Send "👍"</button>
+      <button onclick="zoom(0)">Close Zooming Map</button>
+      <br />
       <button onclick="consoleSubmit('> 🛸🏃🌎💨?')">Send "🛸🏃🌎💨?"</button>
       <h2>Console: <span id="console-status">Paused</span></h2>
       <button onclick="consoleState(true)">Play</button>

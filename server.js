@@ -43,4 +43,7 @@ io.sockets.on("connection", (socket) => {
   socket.on("spam-send", (state) => {
     io.emit("spam-receive", state);
   });
+  socket.on("debug-send", () => {
+    io.emit("debug-receive");
+  });
 });
