@@ -350,9 +350,9 @@ td {
 #window-zoom {
   background-color: black;
   height: 600px;
-  width: 1000px;
-  top: 175px;
-  left: 350px;
+  width: 800px;
+  top: 125px;
+  left: 250px;
   overflow: hidden;
   display: none;
 }
