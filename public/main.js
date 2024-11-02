@@ -899,3 +899,7 @@ function satelliteStep() {
 }
 
 satelliteStep();
+
+setTimeout(() =>{
+  consoleContainer.scrollTo(0, consoleContainer.scrollHeight);
+}, 1000);

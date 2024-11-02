@@ -416,8 +416,8 @@ td {
 }
 
 .emoji {
-  margin: 0 15px;
-  transform: scale(2);
+  margin: 0 22.5px;
+  transform: scale(2.5);
   width: 20px;
 }
 

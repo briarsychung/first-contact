@@ -29,7 +29,8 @@ END_4
 0_👌👌👌
 1_When is this happening?
 1_When am I going to be picked up?
-1_Wait, do you guys have a teleporter? Should I meet you outside
+1_Wait, do you guys have a teleporter?
+1_Should I meet you outside
 0_📡
 1_Got it. Will do.
 1_Beacon complete✅, transmitting signal soon!
