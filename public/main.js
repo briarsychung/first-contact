@@ -233,6 +233,7 @@ socket.on("load-receive", (scene, end) => {
   consolePlaying = false;
   currentScene = scene;
   if (mode === 1) {
+    clearMessage();
     resetZIndex();
 
     setTimeout(() => {
@@ -341,6 +342,8 @@ function consoleDelete() {
 
 socket.on("remove-receive", () => {
   if (mode === 1 && messages[currentMessage - 1].type === "message") {
+    clearMessage();
+    
     currentMessage--;
     console.log("remove: --");
     let removables = document.getElementsByClassName("console-removable");
@@ -963,8 +966,9 @@ function send() {
 
 socket.on("send-receive", () => {
   if (mode === 1) {
-    if (!consolePlaying) {
-      currentMessage++;
+    clearMessage();
+    if (consolePlaying) {
+      currentMessage--;
     }
     consolePlaying = false;
     forceMessage();
@@ -977,8 +981,8 @@ window.send = send;
 
 function forceMessage() {
   consoleSendMessage(
-    (messages[currentMessage].author === 0 ? "&gt; " : "&lt; ") +
-      messages[currentMessage].content
+    (messages[currentMessage + 1].author === 0 ? "&gt; " : "&lt; ") +
+      messages[currentMessage + 1].content
   );
   consoleSendMessage(" ");
 
@@ -986,4 +990,9 @@ function forceMessage() {
   console.log("forceMessage: ++");
 
   windowFocus("window-console");
+}
+
+function clearMessage() {
+  messageValue = "";
+  consoleInput.innerHTML = "";
 }
