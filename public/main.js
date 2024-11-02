@@ -409,7 +409,7 @@ function jamPos(pos, jam) {
 let weathers = {
   icons: [],
   temps: [],
-  tds: []
+  tds: [],
 };
 let weatherIcons = document.getElementsByClassName("weather-icon");
 let weatherTemps = document.getElementsByClassName("weather-temp");
@@ -473,7 +473,20 @@ function flightUpdate() {
   }
 }
 
-let crazy = ["sunny", "cloud", "rainy", "bedtime", "thunderstorm", "partly_cloudy_day", "cloudy_snowing", "partly_cloudy_night", "sunny_snowing", "snowing", "foggy", ""]
+let crazy = [
+  "sunny",
+  "cloud",
+  "rainy",
+  "bedtime",
+  "thunderstorm",
+  "partly_cloudy_day",
+  "cloudy_snowing",
+  "partly_cloudy_night",
+  "sunny_snowing",
+  "snowing",
+  "foggy",
+  "",
+];
 
 function crazyShit() {
   for (let i = 0; i < 4; i++) {
@@ -498,7 +511,8 @@ function crazyShit() {
           flight.style.top = position.y * 100 + "%";
 
           for (let i = 0; i < weatherIcons.length; i++) {
-            weatherIcons[i].innerHTML = crazy[Math.floor(Math.random() * crazy.length)];
+            weatherIcons[i].innerHTML =
+              crazy[Math.floor(Math.random() * crazy.length)];
           }
         } else {
           flight.style.display = "none";
@@ -840,11 +854,11 @@ fetch("images.txt")
             />
         </div>`;
       if (i > data.length - 4) {
-      windowImage.style.left = 10 * (i + 1) + 50 + "px";
-      windowImage.style.top = 5 * ((i % 10) + 1) + 100 + "px";
+        windowImage.style.left = 10 * (i + 1) + "px";
+        windowImage.style.top = 5 * ((i % 10) + 1) + 100 + "px";
       } else {
-      windowImage.style.left = 10 * (i + 1) + 150 + "px";
-      windowImage.style.top = 5 * ((i % 10) + 1) + "px";
+        windowImage.style.left = 10 * (i + 1) + 100 + "px";
+        windowImage.style.top = 5 * ((i % 10) + 1) + "px";
       }
       document.getElementById("screen-main").appendChild(windowImage);
       windowImages[i] = windowImage;
@@ -905,6 +919,6 @@ function satelliteStep() {
 
 satelliteStep();
 
-setTimeout(() =>{
+setTimeout(() => {
   consoleContainer.scrollTo(0, consoleContainer.scrollHeight);
 }, 1000);
