@@ -406,12 +406,23 @@ function jamPos(pos, jam) {
   return pos;
 }
 
-let weathers = [];
+let weathers = {
+  icons: [],
+  temps: [],
+  tds: []
+};
 let weatherIcons = document.getElementsByClassName("weather-icon");
-let weatherTemps = document.getElementsByClassName("weather-icon");
+let weatherTemps = document.getElementsByClassName("weather-temp");
+let tds = document.getElementsByTagName("td");
 
 for (let i = 0; i < weatherIcons.length; i++) {
-  weathers[i] = weatherIcons[i].innerHTML;
+  weathers.icons[i] = weatherIcons[i].innerHTML;
+  weathers.temps[i] = weatherTemps[i].innerHTML;
+}
+
+for (let i = 0; i < tds.length; i++) {
+  weathers.tds[i] = tds[i].innerHTML;
+  console.log(tds);
 }
 
 function flightUpdate() {
@@ -439,8 +450,18 @@ function flightUpdate() {
       for (let i = 0; i < weatherIcons.length; i++) {
         if (jam) {
           weatherIcons[i].innerHTML = "question_mark";
+          weatherTemps[i].innerHTML = "?";
         } else {
-          weatherIcons[i].innerHTML = weathers[i];
+          weatherIcons[i].innerHTML = weathers.icons[i];
+          weatherTemps[i].innerHTML = weathers.temps[i];
+        }
+      }
+
+      for (let i = 0; i < tds.length; i++) {
+        if (jam) {
+          tds[i].innerHTML = "?";
+        } else {
+          tds[i].innerHTML = weathers.tds[i];
         }
       }
     } else {
