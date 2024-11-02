@@ -213,7 +213,7 @@ function queueMessage() {
   consoleSendMessage(" ");
 
   currentMessage++;
-        console.log("queueMessage: ++");
+  console.log("queueMessage: ++");
 
   if (consolePlaying && messages[currentMessage].author === 0) {
     setTimeout(queueMessage, ALIEN_TIME);
@@ -230,6 +230,7 @@ let loop2aVideo = document.getElementById("loop2a-video");
 let loop2bVideo = document.getElementById("loop2b-video");
 
 socket.on("load-receive", (scene, end) => {
+  consolePlaying = false;
   currentScene = scene;
   if (mode === 1) {
     resetZIndex();
@@ -260,7 +261,7 @@ socket.on("load-receive", (scene, end) => {
 function consoleLoad(scene, end) {
   consoleReset();
   currentMessage = 0;
-        console.log("consoleLoad: 0");
+  console.log("consoleLoad: 0");
   for (let i = 0; i < messages.length; i++) {
     if (
       messages[i].type === (end ? "end" : "start") &&
@@ -276,7 +277,7 @@ function consoleLoad(scene, end) {
     }
 
     currentMessage++;
-        console.log("consoleLoad: ++");
+    console.log("consoleLoad: ++");
   }
 
   if (scene >= 2) {
@@ -313,13 +314,13 @@ socket.on("play-receive", (state) => {
   if (mode === 1) {
     if (state && !consolePlaying) {
       currentMessage++;
-        console.log("play: ++");
+      console.log("play: ++");
       if (messages[currentMessage].author === 0) {
         queueMessage();
       }
     } else if (!state && consolePlaying) {
       currentMessage--;
-      console.log("play: --")
+      console.log("play: --");
     }
 
     consolePlaying = state;
@@ -341,7 +342,7 @@ function consoleDelete() {
 socket.on("remove-receive", () => {
   if (mode === 1 && messages[currentMessage - 1].type === "message") {
     currentMessage--;
-    console.log("remove: --")
+    console.log("remove: --");
     let removables = document.getElementsByClassName("console-removable");
     removables[removables.length - 1].remove();
     removables[removables.length - 1].remove();
@@ -955,3 +956,34 @@ socket.on("debug-receive", () => {
 });
 
 window.debug = debug;
+
+function send() {
+  socket.emit("send-send");
+}
+
+socket.on("send-receive", () => {
+  if (mode === 1) {
+    if (!consolePlaying) {
+      currentMessage++;
+    }
+    consolePlaying = false;
+    forceMessage();
+  } else if (mode === 2) {
+    document.getElementById("console-status").innerHTML = "Paused";
+  }
+});
+
+window.send = send;
+
+function forceMessage() {
+  consoleSendMessage(
+    (messages[currentMessage].author === 0 ? "&gt; " : "&lt; ") +
+      messages[currentMessage].content
+  );
+  consoleSendMessage(" ");
+
+  currentMessage++;
+  console.log("forceMessage: ++");
+
+  windowFocus("window-console");
+}

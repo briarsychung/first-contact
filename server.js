@@ -46,4 +46,7 @@ io.sockets.on("connection", (socket) => {
   socket.on("debug-send", () => {
     io.emit("debug-receive");
   });
+  socket.on("send-send", () => {
+    io.emit("send-receive");
+  });
 });
