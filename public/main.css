@@ -314,7 +314,7 @@ td {
 
 #window-map {
   background-color: white;
-  height: 546px;
+  height: 500px;
   width: 500px;
   top: 80px;
   left: 675px;
@@ -335,8 +335,8 @@ td {
   background-color: white;
   height: 500px;
   width: 300px;
-  top: 150px;
-  left: 250px;
+  top: 100px;
+  left: 200px;
   display: none;
 }
 
@@ -406,12 +406,12 @@ td {
 }
 
 #map-x {
-  border: 0.5px solid black;
+  border: 0.5px solid #f0f;
   top: 50%;
 }
 
 #map-y {
-  border: 0.5px solid black;
+  border: 0.5px solid #f0f;
   left: 50%;
 }
 

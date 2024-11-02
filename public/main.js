@@ -239,7 +239,7 @@ socket.on("load-receive", (scene, end) => {
     flightUpdate();
     radioLoad(scene <= 2 ? 0 : 2);
 
-    airdrop(end || scene === 5 ? 2 : 0);
+    airdrop(0);
     zoom(0);
     spam(false);
   } else if (mode === 2) {
@@ -437,7 +437,7 @@ function flightUpdate() {
 
       for (let i = 0; i < weatherIcons.length; i++) {
         if (jam) {
-          weatherIcons[i].innerHTML = "question";
+          weatherIcons[i].innerHTML = "question_mark";
         } else {
           weatherIcons[i].innerHTML = weathers[i];
         }
@@ -528,7 +528,7 @@ function radioStep() {
 
   radioCount++;
 
-  radioTimeout = setTimeout(radioStep, wow ? 50 : 200);
+  radioTimeout = setTimeout(radioStep, wow ? 25 : 200);
 }
 
 socket.on("wow-receive", (state) => {
