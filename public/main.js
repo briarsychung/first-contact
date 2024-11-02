@@ -408,6 +408,7 @@ function jamPos(pos, jam) {
 
 let weathers = [];
 let weatherIcons = document.getElementsByClassName("weather-icon");
+let weatherTemps = document.getElementsByClassName("weather-icon");
 
 for (let i = 0; i < weatherIcons.length; i++) {
   weathers[i] = weatherIcons[i].innerHTML;
