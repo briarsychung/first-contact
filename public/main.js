@@ -839,8 +839,13 @@ fetch("images.txt")
               class="image-img" width="${images[i][1]}px"
             />
         </div>`;
+      if (i > data.length - 4) {
+      windowImage.style.left = 10 * (i + 1) + 50 + "px";
+      windowImage.style.top = 5 * ((i % 10) + 1) + 100 + "px";
+      } else {
       windowImage.style.left = 10 * (i + 1) + 150 + "px";
       windowImage.style.top = 5 * ((i % 10) + 1) + "px";
+      }
       document.getElementById("screen-main").appendChild(windowImage);
       windowImages[i] = windowImage;
     }
