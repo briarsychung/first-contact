@@ -446,6 +446,44 @@ function flightUpdate() {
       flight.style.display = "none";
     }
   }
+  if (jam) {
+    crazyShit();
+  }
+}
+
+let crazy = ["sunny", "cloud", "rainy", "bedtime", "thunderstorm", "partly_cloudy_day", "cloudy_snowing", "partly_cloudy_night", "sunny_snowing", "snowing", "foggy", ""]
+
+function crazyShit() {
+  for (let i = 0; i < 4; i++) {
+    setTimeout(() => {
+      for (let i = 0; i < flights.length; i++) {
+        let flight = document.getElementById(flights[i].id);
+
+        let position = getPosition(
+          jamPos(flights[i].pos, true),
+          flights[i].angle,
+          SPACE * (flightTime - i)
+        );
+
+        if (
+          position.x >= 0 &&
+          position.x <= 1 &&
+          position.y >= 0 &&
+          position.y <= 1
+        ) {
+          flight.style.display = "initial";
+          flight.style.left = position.x * 100 + "%";
+          flight.style.top = position.y * 100 + "%";
+
+          for (let i = 0; i < weatherIcons.length; i++) {
+            weatherIcons[i].innerHTML = crazy[Math.floor(Math.random() * crazy.length)];
+          }
+        } else {
+          flight.style.display = "none";
+        }
+      }
+    }, i * 75);
+  }
 }
 
 const RADIO_MAX_ROWS = 24;
