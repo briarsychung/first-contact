@@ -400,10 +400,17 @@ function jamPos(pos, jam) {
   if (jam) {
     return {
       x: pos.x + (Math.random() * 2 - 1) * 0.2,
-      y: pos.y + (Math.random() * 2 - 1) * 0.2
-    }
+      y: pos.y + (Math.random() * 2 - 1) * 0.2,
+    };
   }
   return pos;
+}
+
+let weathers = [];
+let weatherIcons = document.getElementsByClassName("weather-icon");
+
+for (let i = 0; i < weatherIcons.length; i++) {
+  weathers[i] = weatherIcons[i].innerHTML;
 }
 
 function flightUpdate() {
@@ -427,6 +434,14 @@ function flightUpdate() {
       flight.style.left = position.x * 100 + "%";
       flight.style.top = position.y * 100 + "%";
       flight.style.color = jam ? "red" : colors[i % 3];
+
+      for (let i = 0; i < weatherIcons.length; i++) {
+        if (jam) {
+          weatherIcons[i].innerHTML = "question";
+        } else {
+          weatherIcons[i].innerHTML = weathers[i];
+        }
+      }
     } else {
       flight.style.display = "none";
     }
@@ -548,8 +563,16 @@ function glitch2() {
   loop2bVideo.currentTime = 0;
 }
 
-let windowGlitch = [document.getElementById("window-glitch-a"), document.getElementById("window-glitch-b"), document.getElementById("window-glitch-c")];
-let windowGlitch2 = [document.getElementById("window-glitch2-a"), document.getElementById("window-glitch2-b"), document.getElementById("window-glitch2-c")];
+let windowGlitch = [
+  document.getElementById("window-glitch-a"),
+  document.getElementById("window-glitch-b"),
+  document.getElementById("window-glitch-c"),
+];
+let windowGlitch2 = [
+  document.getElementById("window-glitch2-a"),
+  document.getElementById("window-glitch2-b"),
+  document.getElementById("window-glitch2-c"),
+];
 socket.on("glitch-receive", () => {
   let g = mode === 1 ? windowGlitch : windowGlitch2;
   console.log(mode);
@@ -808,7 +831,8 @@ consoleContainer.scrollTo(0, consoleContainer.scrollHeight);
 let satellite = 0;
 function satelliteStep() {
   satellite = satellite >= 100 ? 0 : satellite + 0.5;
-  document.getElementById("satellite-container").style.backgroundPosition = satellite + "%";
+  document.getElementById("satellite-container").style.backgroundPosition =
+    satellite + "%";
   setTimeout(() => {
     satelliteStep();
   }, 1000);
