@@ -803,6 +803,9 @@ zoomContainer.addEventListener("click", (e) => {
 
 function zoom(state) {
   socket.emit("zoom-send", state);
+  if (state === 0) {
+    airdrop(0);
+  }
 }
 
 socket.on("zoom-receive", (state) => {
